@@ -27,7 +27,9 @@ public class App extends Application {
             stage.setScene(scene);
             stage.show();
 
-            GameConfiguration gameConfiguration = new GameConfiguration();
+            GameConfiguration gameConfiguration = new GameConfiguration.Builder()
+                                                                       .wordsLength(100)
+                                                                       .build();
             System.out.println(gameConfiguration);
         } catch (IOException e) {
             e.printStackTrace();

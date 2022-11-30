@@ -1,6 +1,6 @@
 package com.dactylogame;
 
-import java.util.LinkedList;
+import java.util.ArrayDeque;
 import java.util.Queue;
 
 import com.thedeanda.lorem.LoremIpsum;
@@ -9,14 +9,15 @@ public class GameConfiguration{
     private String[] words;
     private Queue<String> wordsQueue;
     
-    public GameConfiguration() {
+    public GameConfiguration(GameConfiguration.Builder builder) {
+        words = builder.words;
+        wordsQueue = builder.wordsQueue;
+
         LoremIpsum lorem = LoremIpsum.getInstance();
-        words = new String[10];
         
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < words.length; i++) {
             words[i] = lorem.getWords(1);
         }
-        wordsQueue = new LinkedList<>();
 
         for (int i = 0; i < 15; i++) {
             wordsQueue.add(words[i]);
@@ -28,13 +29,40 @@ public class GameConfiguration{
     }
 
     public Queue<String> getWordsQueue() {
-        Queue<String> clone = new LinkedList<>();
+        Queue<String> clone = new ArrayDeque<>();
         clone.addAll(wordsQueue);
         return clone;
     }
 
+    public String printWords() {
+        String wordsString = "";
+        for (String word : words) {
+            wordsString += word + " ";
+        }
+        return wordsString;
+    }
+
     @Override
     public String toString() {
-        return "GameConfiguration [wordsQueue=" + wordsQueue + "]";
+        return "GameConfiguration [words= " + printWords() + "; wordsQueue=" + wordsQueue + "]";
+    }
+
+    public static class Builder {
+        private String[] words;
+        private Queue<String> wordsQueue;
+
+        public Builder() {
+            words = new String[50];
+            wordsQueue = new ArrayDeque<>();
+        }
+
+        public Builder wordsLength(int wordsLength) {
+            words = new String[wordsLength];
+            return this;
+        }
+
+        public GameConfiguration build() {
+            return new GameConfiguration(this);
+        }
     }
 }
