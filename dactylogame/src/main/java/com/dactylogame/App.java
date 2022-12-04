@@ -25,12 +25,8 @@ public class App extends Application {
             
             stage.setTitle("Dactylogame");
             stage.setScene(scene);
+            stage.setResizable(false);
             stage.show();
-
-            GameConfiguration gameConfiguration = new GameConfiguration.Builder()
-                                                                       .wordsLength(100)
-                                                                       .build();
-            System.out.println(gameConfiguration);
         } catch (IOException e) {
             e.printStackTrace();
             return;

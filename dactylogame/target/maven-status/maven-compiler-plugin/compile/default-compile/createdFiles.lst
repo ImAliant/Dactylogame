@@ -1,6 +1,9 @@
-com/dactylogame/GameConfiguration$Builder.class
-com/dactylogame/SystemInfo.class
 com/dactylogame/MainSceneController.class
+com/dactylogame/GameSceneController.class
 com/dactylogame/App.class
 com/dactylogame/GameMethods.class
+com/dactylogame/Game.class
+com/dactylogame/Game$1$1.class
+com/dactylogame/SystemInfo.class
+com/dactylogame/Game$1.class
 com/dactylogame/GameConfiguration.class

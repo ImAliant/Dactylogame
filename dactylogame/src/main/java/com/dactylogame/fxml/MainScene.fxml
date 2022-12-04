@@ -40,16 +40,16 @@
 
 <VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dactylogame.MainSceneController">
   <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="403.0" prefWidth="640.0">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="405.0" prefWidth="640.0">
       <children>
-            <Label layoutX="257.0" layoutY="64.0" prefHeight="25.0" prefWidth="138.0" text="DactyloGame">
+            <Label fx:id="title" layoutX="257.0" layoutY="64.0" prefHeight="25.0" prefWidth="138.0" text="DactyloGame">
                <font>
                   <Font name="Cascadia Code Regular" size="21.0" />
                </font>
             </Label>
-            <Button layoutX="244.0" layoutY="157.0" mnemonicParsing="false" onMouseClicked="#OnClickedJouer" prefHeight="24.0" prefWidth="165.0" text="Jouer" />
-            <Button layoutX="244.0" layoutY="200.0" mnemonicParsing="false" onMouseClicked="#OnClickedOptions" prefHeight="24.0" prefWidth="165.0" text="Options" />
-            <Button layoutX="244.0" layoutY="242.0" mnemonicParsing="false" onMouseClicked="#OnClickedQuitter" prefHeight="24.0" prefWidth="165.0" text="Quitter" />
+            <Button fx:id="btnJouer" layoutX="244.0" layoutY="127.0" mnemonicParsing="false" onMouseClicked="#btnJouerClicked" prefHeight="45.0" prefWidth="165.0" text="Jouer" />
+            <Button fx:id="btnOptions" layoutX="244.0" layoutY="200.0" mnemonicParsing="false" onMouseClicked="#btnOptionsClicked" prefHeight="45.0" prefWidth="165.0" text="Options" />
+            <Button fx:id="btnQuitter" layoutX="244.0" layoutY="274.0" mnemonicParsing="false" onMouseClicked="#btnQuitterClicked" prefHeight="45.0" prefWidth="165.0" text="Quitter" />
       </children>
     </AnchorPane>
   </children>

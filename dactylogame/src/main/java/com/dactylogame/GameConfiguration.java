@@ -1,37 +1,58 @@
 package com.dactylogame;
 
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Queue;
 
 import com.thedeanda.lorem.LoremIpsum;
 
-public class GameConfiguration{
-    private String[] words;
+public final class GameConfiguration{
+    private static final GameConfiguration instance = null;
+
+    private ArrayList<String> words;
     private Queue<String> wordsQueue;
     
-    public GameConfiguration(GameConfiguration.Builder builder) {
-        words = builder.words;
-        wordsQueue = builder.wordsQueue;
+    private int time;
+
+    public static final int TIME_DEFAULT = 30;
+
+    // Version par défaut sans choix du nombre de mots.
+    private GameConfiguration() {
+        words = new ArrayList<String>(50);
+        wordsQueue = new ArrayDeque<String>(15);
+        time = TIME_DEFAULT;
 
         LoremIpsum lorem = LoremIpsum.getInstance();
-        
-        for (int i = 0; i < words.length; i++) {
-            words[i] = lorem.getWords(1);
+        for (int i = 0; i < 50; i++) {
+            words.add(lorem.getWords(1));
         }
 
         for (int i = 0; i < 15; i++) {
-            wordsQueue.add(words[i]);
+            wordsQueue.add(words.get(i));
         }
     }
 
-    public String[] getWords() {
-        return words.clone();
+    public static GameConfiguration getInstance() {
+        if (instance == null) {
+            return new GameConfiguration();
+        }
+        return instance;
+    }
+
+    public ArrayList<String> getWords() {
+        ArrayList<String> clone = new ArrayList<String>();
+        clone.addAll(words);
+        return clone;
     }
 
     public Queue<String> getWordsQueue() {
         Queue<String> clone = new ArrayDeque<>();
         clone.addAll(wordsQueue);
         return clone;
+    }
+
+    public int getTime() {
+        return time;
     }
 
     public String printWords() {
@@ -45,24 +66,5 @@ public class GameConfiguration{
     @Override
     public String toString() {
         return "GameConfiguration [words= " + printWords() + "; wordsQueue=" + wordsQueue + "]";
-    }
-
-    public static class Builder {
-        private String[] words;
-        private Queue<String> wordsQueue;
-
-        public Builder() {
-            words = new String[50];
-            wordsQueue = new ArrayDeque<>();
-        }
-
-        public Builder wordsLength(int wordsLength) {
-            words = new String[wordsLength];
-            return this;
-        }
-
-        public GameConfiguration build() {
-            return new GameConfiguration(this);
-        }
     }
 }
