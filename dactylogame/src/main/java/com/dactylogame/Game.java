@@ -33,6 +33,8 @@ public class Game implements GameMethods, Initializable {
 
     private final int nb_words;
 
+    private static boolean replay = false;
+
     private int wordUpdateCounter = 0;
     private int charPointer = 0;
     private int error = 0;
@@ -45,12 +47,14 @@ public class Game implements GameMethods, Initializable {
     /*
      *  Score
      */
-    private double MPM = 0;
-    private double precision = 0;
-    private int regularity = 0;
+    private static double MPM = 0;
+    private static double precision = 0;
+    private static int regularity = 0;
 
     private int caractereUtile = 0;
     private int tempCaraUtile = 0;
+
+    private Result result;
 
     /* 
      *  JAVA FX
@@ -75,6 +79,18 @@ public class Game implements GameMethods, Initializable {
             instance = new Game();
         }
         return instance;
+    }
+
+    public static Game newGame() {
+        if (replay) {
+            instance = new Game();
+            Result.reset();
+            replay = false;
+            return instance;
+        }
+        else {
+            throw new IllegalStateException("Game already started");
+        }
     }
 
     // Initialise les variables nécessaires pour le démarage du jeu lors de l'ouverture de la fenetre.
@@ -144,7 +160,7 @@ public class Game implements GameMethods, Initializable {
     // Quitte le jeu.
     @FXML
     private void btnQuitterClicked(MouseEvent event) {
-        System.exit(0);
+        Platform.exit();
     }
 
     // Lance le jeu lorsque on appui sur le label.
@@ -171,22 +187,28 @@ public class Game implements GameMethods, Initializable {
     @Override
     public void endGame() {
         timer.cancel();
-        System.out.println("Fin du jeu");
         
         resultats();
-
-        System.exit(0);
     }
 
     public void resultats() {
-        float divisionTime = (float) GameConfiguration.TIME_DEFAULT / 60;
-        MPM = (double)(caractereUtile / divisionTime)/5;
+        float minute = (float) GameConfiguration.TIME_DEFAULT / 60;
+        MPM = (double)(caractereUtile / minute)/5;
         precision = ((double) caractereUtile / (double) (caractereUtile + error)) * 100;
 
         //TODO : regularity
 
-        System.out.println("MPM: " + MPM);
-        System.out.printf("Resultat: %4.1f mots par minute, %4.1f%% de précision, %d de régularité (TODO)%n", MPM, precision, regularity);
+        openResultScene();
+    }
+
+    public void openResultScene() {
+        try {
+            result = Result.getInstance();
+            result.start(new Stage());
+            pane.getScene().getWindow().hide();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     // Met a jour le label du temps restants.
@@ -235,6 +257,18 @@ public class Game implements GameMethods, Initializable {
         return clone;
     }
 
+    public double getMPM() {
+        return MPM;
+    }
+    public double getPrecision() {
+        return precision;
+    }
+    public int getRegularity() {
+        return regularity;
+    }
     
+    public static void setReplay(boolean b) {
+        replay = b;
+    }
 }
 
