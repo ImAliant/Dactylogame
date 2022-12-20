@@ -29,7 +29,6 @@ public class ResultSceneController {
         DecimalFormat f = new DecimalFormat();
         f.setMaximumFractionDigits(2);
 
-        resultTitleLabel.setText("Resultat");
         MPMLabel.setText("MPM : " + f.format(result.getMPM()));
         precisionLabel.setText("Precision : " + f.format(result.getPrecision()) + "%");
         regularityLabel.setText("Regularité : " + result.getRegularity());

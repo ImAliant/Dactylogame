@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -61,7 +62,9 @@ public class Game implements GameMethods, Initializable {
      */
     @FXML private Pane pane;
     @FXML private Button btnQuitter;
-    @FXML private TextExt text;
+    @FXML private TextFlow textFlow;
+    @FXML private TextExt firstWord;
+    @FXML private TextExt textQueue;
     @FXML private Label timeLabel;
     @FXML private Label errorLabel;
     @FXML private Label lauchGameLabel;
@@ -100,9 +103,12 @@ public class Game implements GameMethods, Initializable {
 
         timeLabel.setText("Temps restant: " + 0);
         errorLabel.setText("Erreurs: " + error);
+        firstWord.setText(word + " ");
+        textQueue.setText(printQueue());
         
-        text.setText(printQueue());
-        text.setVisible(false);
+        firstWord.setVisible(false);
+        textQueue.setVisible(false);
+        textFlow.setVisible(false);
     }
 
     // Charge la scene depuis le dossier fxml et l'affiche sur l'écran.
@@ -128,26 +134,47 @@ public class Game implements GameMethods, Initializable {
     @FXML
     private void play(KeyEvent event) {
         if (isLauched) {
+            // Si il n'y a plus de mot dans la file, le jeu est terminé.
             if (wordsQueue.isEmpty()) {
                 endGame();
             }
 
+            // Mise a jour du mot courant.
             if (charPointer == word.length()) {
+                firstWord.setStyle("-fx-fill: #ffffff; -fx-font-weight: bold;");
+
                 charPointer = 0;
                 if (checkWord()) {
-                    System.out.println("Test checkWord");
                     caractereUtile += tempCaraUtile;
-                    System.out.println("Caractere utile: " + caractereUtile);
                 }
                 errorWord = 0;
                 tempCaraUtile = 0;
                 updateWord();
             }
+            // Test si la touche appuyée est la bonne.
             else {
-                if (event.getCharacter().charAt(0) == word.charAt(charPointer)) {
+                // Test si on appui sur la touche backspace.
+                if (event.getCharacter().charAt(0) == 8) {
+                    if (charPointer > 0) {
+                        firstWord.setStyle("-fx-fill: #ffffff; -fx-font-weight: bold;");
+                        charPointer--;
+                        tempCaraUtile--;
+                        if (errorWord > 0) {
+                            error--;
+                            errorWord--;
+                            errorLabel.setText("Erreurs: " + error);
+                        }
+                    }
+                }
+
+                else if (event.getCharacter().charAt(0) == word.charAt(charPointer)) {
+                    firstWord.setStyle("-fx-fill: #00ff00; -fx-font-weight: bold;");
+            
                     charPointer++;
                     tempCaraUtile++;
                 } else {
+                    firstWord.setStyle("-fx-fill: #ff0000; -fx-font-weight: bold;");
+
                     charPointer++;
                     error++;
                     errorWord++;
@@ -160,7 +187,7 @@ public class Game implements GameMethods, Initializable {
     // Quitte le jeu.
     @FXML
     private void btnQuitterClicked(MouseEvent event) {
-        Platform.exit();
+        System.exit(0);
     }
 
     // Lance le jeu lorsque on appui sur le label.
@@ -168,7 +195,9 @@ public class Game implements GameMethods, Initializable {
     private void lauchGame(MouseEvent event) {
         isLauched = true;
         lauchGameLabel.setVisible(false);
-        text.setVisible(true);
+        firstWord.setVisible(true);
+        textQueue.setVisible(true);
+        textFlow.setVisible(true);
         time = GameConfiguration.getInstance().getTime();
 
         timer = new Timer();
@@ -229,8 +258,9 @@ public class Game implements GameMethods, Initializable {
     // Créer une chaine de caractere correspondant aux mots présents dans la file.
     public String printQueue() {
         StringBuilder sb = new StringBuilder();
-        for (String word : wordsQueue) {
-            sb.append(word).append(" ");
+        for(int i = 1; i < wordsQueue.size(); i++) {
+            sb.append(wordsQueue.toArray()[i]);
+            sb.append(" ");
         }
         return sb.toString();
     }
@@ -245,7 +275,8 @@ public class Game implements GameMethods, Initializable {
         if (wordsQueue.size() > 0) {
             wordsQueue.remove();
             word = wordsQueue.peek();
-            text.setText(printQueue());
+            firstWord.setText(word+ " ");
+            textQueue.setText(printQueue());
             wordUpdateCounter++;
         }
     }
