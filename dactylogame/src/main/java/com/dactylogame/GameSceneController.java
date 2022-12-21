@@ -8,7 +8,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
 public class GameSceneController {
-    private Game game;
+    private GameNormal game;
 
     public static KeyEvent keyTyped = null;
 
@@ -17,7 +17,7 @@ public class GameSceneController {
     @FXML private Label texteLabel;
 
     public void initialize() {
-        game = Game.getInstance();
+        game = GameNormal.getInstance();
         texteLabel.setText(game.getWordsQueue().peek());
     }
 

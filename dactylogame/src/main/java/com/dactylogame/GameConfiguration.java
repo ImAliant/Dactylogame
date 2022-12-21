@@ -14,7 +14,7 @@ public final class GameConfiguration{
     
     private int time;
 
-    public static final int TIME_DEFAULT = 30;
+    public static final int TIME_DEFAULT = 60;
 
     // Version par défaut sans choix du nombre de mots.
     private GameConfiguration() {

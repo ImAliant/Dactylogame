@@ -34,22 +34,29 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dactylogame.MainSceneController">
   <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="405.0" prefWidth="640.0">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="405.0" prefWidth="640.0" style="-fx-background-color: #1f1f1f;">
       <children>
-            <Label fx:id="title" layoutX="257.0" layoutY="64.0" prefHeight="25.0" prefWidth="138.0" text="DactyloGame">
+            <Label id="text" fx:id="title" layoutX="257.0" layoutY="64.0" prefHeight="25.0" prefWidth="138.0" text="DactyloGame" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Cascadia Code Regular" size="21.0" />
                </font>
             </Label>
-            <Button fx:id="btnJouer" layoutX="244.0" layoutY="127.0" mnemonicParsing="false" onMouseClicked="#btnJouerClicked" prefHeight="45.0" prefWidth="165.0" text="Jouer" />
-            <Button fx:id="btnOptions" layoutX="244.0" layoutY="200.0" mnemonicParsing="false" onMouseClicked="#btnOptionsClicked" prefHeight="45.0" prefWidth="165.0" text="Options" />
-            <Button fx:id="btnQuitter" layoutX="244.0" layoutY="274.0" mnemonicParsing="false" onMouseClicked="#btnQuitterClicked" prefHeight="45.0" prefWidth="165.0" text="Quitter" />
+            <Button id="button" fx:id="btnJouer" layoutX="244.0" layoutY="127.0" mnemonicParsing="false" onMouseClicked="#btnJouerClicked" prefHeight="45.0" prefWidth="165.0" stylesheets="@../css/style-app.css" text="Jouer" />
+            <Button id="button" fx:id="btnOptions" layoutX="244.0" layoutY="200.0" mnemonicParsing="false" onMouseClicked="#btnOptionsClicked" prefHeight="45.0" prefWidth="165.0" stylesheets="@../css/style-app.css" text="Options" />
+            <Button id="button" fx:id="btnQuitter" layoutX="244.0" layoutY="274.0" mnemonicParsing="false" onMouseClicked="#btnQuitterClicked" prefHeight="45.0" prefWidth="165.0" stylesheets="@../css/style-app.css" text="Quitter" />
+            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="576.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/icon.png" />
+               </image>
+            </ImageView>
       </children>
     </AnchorPane>
   </children>
