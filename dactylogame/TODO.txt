@@ -1,0 +1,15 @@
+SOLO : Mode normal -> FAIT
+SOLO : Mode Jeu -> A faire (en cours)
+   |-> Ajouter le choix du mode de jeu dans le menu principal.
+       |-> Remplacer le bouton "Options" par "Choix mode de jeu"
+       |-> Créer une nouvelle scene pour le choix du mode de jeu.
+       |-> Créer 3 checkbox pour la selection.
+       |-> Créer un bouton "Valider" pour valider le choix du jeu et "Quitter" pour quitter le jeu. 
+   |-> Separer les 3 modes de jeu en créant 3 classes (1 par mode) : 
+       |-> GameModeNormal
+       |-> GameModeJeu
+       |-> GameModeMulti
+   |-> On utilisera une interface pour les methodes des 3 classes.
+   |-> Dans la classe Game, on aura une variable de type GameMode qui sera initialisée dans le constructeur.
+   ...
+MULTI : Mode Jeu -> A faire

@@ -12,14 +12,14 @@ import javafx.stage.Stage;
 public class Result {
     private static Result instance = null;
 
-    private Game game;
+    private GameNormal game;
 
     private double MPM;
     private double precision;
-    private int regularity;
+    private double regularity;
 
     private Result() {
-        this.game = Game.getInstance();
+        this.game = GameNormal.getInstance();
         this.MPM = game.getMPM();
         this.precision = game.getPrecision();
         this.regularity = game.getRegularity();
@@ -60,7 +60,7 @@ public class Result {
     public double getPrecision() {
         return precision;
     }
-    public int getRegularity() {
+    public double getRegularity() {
         return regularity;
     }
 }

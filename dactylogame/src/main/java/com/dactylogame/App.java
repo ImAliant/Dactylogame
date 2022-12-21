@@ -3,13 +3,6 @@ package com.dactylogame;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Collection;
-import java.util.Collections;
-
-import org.fxmisc.richtext.StyleClassedTextField;
-import org.fxmisc.richtext.StyledTextField;
-import org.fxmisc.richtext.model.StyleSpans;
-import org.fxmisc.richtext.model.StyleSpansBuilder;
 
 import javafx.fxml.FXMLLoader;
 import javafx.application.Application;
@@ -32,11 +25,11 @@ public class App extends Application {
             Scene scene = new Scene(root);
             
             stage.setTitle("Dactylogame");
-            try {
+            /*try {
                 stage.getIcons().add(new Image(App.class.getResourceAsStream("dactylogame/src/main/java/com/dactylogame/resources/icon.jpg")));
             } catch (Exception e) {
                 e.printStackTrace();
-            }
+            }*/
             stage.setScene(scene);
             stage.setResizable(false);
             stage.show();

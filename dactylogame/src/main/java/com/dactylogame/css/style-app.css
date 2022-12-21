@@ -1,9 +1,3 @@
-.text {
-    -fx-font-size: 15px;
-    -fx-font-family: "Cascadia Code";
-    -fx-text-fill: #FFFFFF;
-}
-
 .button {
     -fx-background-color: #272B2B;
     -fx-text-fill: #FFFFFF;

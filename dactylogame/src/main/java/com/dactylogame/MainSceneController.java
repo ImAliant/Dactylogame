@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 public class MainSceneController {
 
-    private Game game;
+    private GameNormal game;
 
     @FXML
     private Label title;
@@ -25,7 +25,7 @@ public class MainSceneController {
     private Button btnOptions;
 
     public void initialize() throws Exception{
-        game = Game.getInstance();
+        game = GameNormal.getInstance();
     }
 
     @FXML

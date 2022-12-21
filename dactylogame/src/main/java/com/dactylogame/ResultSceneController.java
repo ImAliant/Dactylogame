@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 
 public class ResultSceneController {
 
-    private Game game;
+    private GameNormal game;
     private Result result;
 
     @FXML private Pane pane;
@@ -23,7 +23,7 @@ public class ResultSceneController {
     @FXML private Label regularityLabel;
 
     public void initialize() {
-        game = Game.getInstance();
+        game = GameNormal.getInstance();
         result = Result.getInstance();
 
         DecimalFormat f = new DecimalFormat();
@@ -31,7 +31,7 @@ public class ResultSceneController {
 
         MPMLabel.setText("MPM : " + f.format(result.getMPM()));
         precisionLabel.setText("Precision : " + f.format(result.getPrecision()) + "%");
-        regularityLabel.setText("Regularité : " + result.getRegularity());
+        regularityLabel.setText("Regularité : " + f.format(result.getRegularity()) + "s");
 
         btnQuit.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent e) -> {
             System.exit(0);
@@ -39,8 +39,8 @@ public class ResultSceneController {
         
         btnReplay.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent e) -> {
             try {
-                Game.setReplay(true);
-                game = Game.newGame();
+                GameNormal.setReplay(true);
+                game = GameNormal.newGame();
                 game.start(new Stage());
                 btnReplay.getScene().getWindow().hide();
             } catch (Exception e1) {
