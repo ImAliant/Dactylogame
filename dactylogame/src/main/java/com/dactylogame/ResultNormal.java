@@ -9,8 +9,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class Result {
-    private static Result instance = null;
+public class ResultNormal {
+    private static ResultNormal instance = null;
 
     private GameNormal game;
 
@@ -18,16 +18,17 @@ public class Result {
     private double precision;
     private double regularity;
 
-    private Result() {
+    private ResultNormal() {
         this.game = GameNormal.getInstance();
         this.MPM = game.getMPM();
         this.precision = game.getPrecision();
         this.regularity = game.getRegularity();
     }
 
-    public static Result getInstance() {
+    public static ResultNormal getInstance() {
         if (instance == null) {
-            instance = new Result();
+            System.out.println("Creating new ResultNormal instance");
+            instance = new ResultNormal();
         }
         return instance;
     }
@@ -39,7 +40,7 @@ public class Result {
     public void start(Stage window) throws IOException {
         Parent root;
         try {
-            URL url = new File("src/main/java/com/dactylogame/fxml/ResultScene.fxml").toURI().toURL();
+            URL url = new File("src/main/java/com/dactylogame/fxml/ResultNormalScene.fxml").toURI().toURL();
             root = FXMLLoader.load(url);
 
             Scene scene = new Scene(root);

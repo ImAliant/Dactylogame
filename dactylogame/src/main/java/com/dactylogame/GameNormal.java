@@ -28,10 +28,10 @@ import java.util.TimerTask;
 
 import org.fxmisc.richtext.*;
 
-public class GameNormal /*extends Game*/ implements GameMethods, Initializable {
+public class GameNormal implements GameMethods, Initializable {
     private static GameNormal instance = null;
 
-    private GameConfiguration gameConfiguration;
+    private GameNormalConfiguration gameConfiguration;
     private Queue<String> wordsQueue;
 
     private final int nb_words;
@@ -61,7 +61,7 @@ public class GameNormal /*extends Game*/ implements GameMethods, Initializable {
     private int compteur = 0;
     private ArrayList<Float> ecartType = new ArrayList<Float>();
 
-    private Result result;
+    private ResultNormal result;
 
     /* 
      *  JAVA FX
@@ -77,7 +77,7 @@ public class GameNormal /*extends Game*/ implements GameMethods, Initializable {
     @FXML private Line pointerChar;
 
     public GameNormal() {
-        this.gameConfiguration = GameConfiguration.getInstance();
+        this.gameConfiguration = GameNormalConfiguration.getInstance();
         wordsQueue = gameConfiguration.getWordsQueue();
         wordUpdateCounter = wordsQueue.size();
         nb_words = gameConfiguration.getWords().size();
@@ -86,6 +86,7 @@ public class GameNormal /*extends Game*/ implements GameMethods, Initializable {
     //Singleton Game
     public static GameNormal getInstance() {
         if (instance == null) {
+            System.out.println("Creating new GameNormal instance");
             instance = new GameNormal();
         }
         return instance;
@@ -94,7 +95,7 @@ public class GameNormal /*extends Game*/ implements GameMethods, Initializable {
     public static GameNormal newGame() {
         if (replay) {
             instance = new GameNormal();
-            Result.reset();
+            ResultNormal.reset();
             replay = false;
             return instance;
         }
@@ -123,7 +124,7 @@ public class GameNormal /*extends Game*/ implements GameMethods, Initializable {
     public void start(Stage window) throws IOException {
         Parent root;
         try {
-            URL url = new File("src/main/java/com/dactylogame/fxml/GameScene.fxml").toURI().toURL();
+            URL url = new File("src/main/java/com/dactylogame/fxml/GameNormalScene.fxml").toURI().toURL();
             root = FXMLLoader.load(url);
 
             Scene scene = new Scene(root);
@@ -165,7 +166,7 @@ public class GameNormal /*extends Game*/ implements GameMethods, Initializable {
             pointerChar.setLayoutX(124);
             
             charPointer = 0;
-            if (checkWord()) {
+            if (checkError()) {
                 caractereUtile += tempCaraUtile;
             }
             errorWord = 0;
@@ -178,7 +179,7 @@ public class GameNormal /*extends Game*/ implements GameMethods, Initializable {
         // Test si on appui sur la touche backspace.
         if (event.getCharacter().charAt(0) == 8) {
             if (charPointer > 0) {
-                if (errorWord == 0)
+                if (errorWord == 1)
                     firstWord.setStyle("-fx-fill: #ffffff; -fx-font-weight: bold;");
 
                 pointerChar.setLayoutX(pointerChar.getLayoutX() - 12);
@@ -192,30 +193,30 @@ public class GameNormal /*extends Game*/ implements GameMethods, Initializable {
                 }
             }
         }
+        else {
+            if (word != null) {
+                if (event.getCharacter().charAt(0) == word.charAt(charPointer)) {
+                    if (errorWord == 0)
+                        firstWord.setStyle("-fx-fill: #00ff00; -fx-font-weight: bold;");
 
-        else if (event.getCharacter().charAt(0) == word.charAt(charPointer)) {
-            if (errorWord == 0)
-                firstWord.setStyle("-fx-fill: #00ff00; -fx-font-weight: bold;");
+                    if (caractereUtile > 0 || tempCaraUtile > 0) {
+                        ecartType.add((float) ((System.nanoTime() - tempEcart)/1000000000f));
+                        compteur++;
+                    }
+                    tempEcart = System.nanoTime();
 
-            pointerChar.setLayoutX(pointerChar.getLayoutX() + 12);
+                    charPointer++;
+                    tempCaraUtile++;
+                } else {
+                    firstWord.setStyle("-fx-fill: #ff0000; -fx-font-weight: bold;");
 
-            if (caractereUtile > 0 || tempCaraUtile > 0) {
-                ecartType.add((float) ((System.nanoTime() - tempEcart)/1000000000f));
-                compteur++;
+                    charPointer++;
+                    error++;
+                    errorWord++;
+                    errorLabel.setText("Erreurs: " + error);
+                }
+                pointerChar.setLayoutX(pointerChar.getLayoutX() + 12);
             }
-            tempEcart = System.nanoTime();
-            
-            charPointer++;
-            tempCaraUtile++;
-        } else {
-            firstWord.setStyle("-fx-fill: #ff0000; -fx-font-weight: bold;");
-
-            pointerChar.setLayoutX(pointerChar.getLayoutX() + 12);
-
-            charPointer++;
-            error++;
-            errorWord++;
-            errorLabel.setText("Erreurs: " + error);
         }
     }
 
@@ -235,7 +236,7 @@ public class GameNormal /*extends Game*/ implements GameMethods, Initializable {
         textFlow.setVisible(true);
         pointerChar.setVisible(true);
 
-        time = GameConfiguration.getInstance().getTime();
+        time = GameNormalConfiguration.getInstance().getTime();
 
         timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
@@ -257,8 +258,9 @@ public class GameNormal /*extends Game*/ implements GameMethods, Initializable {
         resultats();
     }
 
+    @Override
     public void resultats() {
-        float minute = (float) GameConfiguration.TIME_DEFAULT / 60;
+        float minute = (float) GameNormalConfiguration.TIME_DEFAULT / 60;
         MPM = (double)(caractereUtile / minute)/5;
         precision = ((double) caractereUtile / (double) (caractereUtile + error)) * 100;
         regularity = calcRegularity();
@@ -283,7 +285,7 @@ public class GameNormal /*extends Game*/ implements GameMethods, Initializable {
 
     public void openResultScene() {
         try {
-            result = Result.getInstance();
+            result = ResultNormal.getInstance();
             result.start(new Stage());
             pane.getScene().getWindow().hide();
         } catch (Exception e) {
@@ -302,11 +304,12 @@ public class GameNormal /*extends Game*/ implements GameMethods, Initializable {
     }
 
     @Override
-    public boolean checkWord() {
+    public boolean checkError() {
         return errorWord == 0;
     }
 
     // Créer une chaine de caractere correspondant aux mots présents dans la file.
+    @Override
     public String printQueue() {
         StringBuilder sb = new StringBuilder();
         for(int i = 1; i < wordsQueue.size(); i++) {
@@ -351,6 +354,10 @@ public class GameNormal /*extends Game*/ implements GameMethods, Initializable {
     
     public static void setReplay(boolean b) {
         replay = b;
+    }
+
+    public ResultNormal getResult() {
+        return result;
     }
 }
 

@@ -1,6 +1,9 @@
-package com.dactylogame;
+package com.dactylogame.controller;
 
 import java.text.DecimalFormat;
+
+import com.dactylogame.GameNormal;
+import com.dactylogame.ResultNormal;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -9,10 +12,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class ResultSceneController {
+public class ResultNormalSceneController {
 
     private GameNormal game;
-    private Result result;
+    private ResultNormal result;
 
     @FXML private Pane pane;
     @FXML private Button btnQuit;
@@ -24,7 +27,7 @@ public class ResultSceneController {
 
     public void initialize() {
         game = GameNormal.getInstance();
-        result = Result.getInstance();
+        result = ResultNormal.getInstance();
 
         DecimalFormat f = new DecimalFormat();
         f.setMaximumFractionDigits(2);

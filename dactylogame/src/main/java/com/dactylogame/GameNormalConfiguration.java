@@ -6,8 +6,8 @@ import java.util.Queue;
 
 import com.thedeanda.lorem.LoremIpsum;
 
-public final class GameConfiguration{
-    private static final GameConfiguration instance = null;
+public final class GameNormalConfiguration {
+    private static GameNormalConfiguration instance = null;
 
     private ArrayList<String> words;
     private Queue<String> wordsQueue;
@@ -17,7 +17,7 @@ public final class GameConfiguration{
     public static final int TIME_DEFAULT = 60;
 
     // Version par défaut sans choix du nombre de mots.
-    private GameConfiguration() {
+    private GameNormalConfiguration() {
         words = new ArrayList<String>(50);
         wordsQueue = new ArrayDeque<String>(15);
         time = TIME_DEFAULT;
@@ -32,9 +32,10 @@ public final class GameConfiguration{
         }
     }
 
-    public static GameConfiguration getInstance() {
+    public static GameNormalConfiguration getInstance() {
         if (instance == null) {
-            return new GameConfiguration();
+            System.out.println("Creating new GameNormalConfiguration instance");
+            instance = new GameNormalConfiguration();
         }
         return instance;
     }

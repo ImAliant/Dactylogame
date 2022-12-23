@@ -7,24 +7,24 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="640.0" style="-fx-background-color: #1f1f1f;" stylesheets="@../css/style-app.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dactylogame.ResultSceneController">
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="640.0" style="-fx-background-color: #1f1f1f;" stylesheets="@../css/style-app.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dactylogame.controller.ResultJeuSoloSceneController">
    <children>
-      <Label fx:id="resultTitleLabel" layoutX="228.0" layoutY="63.0" text="Resultats" textAlignment="CENTER" textFill="WHITE">
+      <Label fx:id="resultTitleLabel" layoutX="241.0" layoutY="64.0" text="Resultats" textAlignment="CENTER" textFill="WHITE">
          <font>
-            <Font name="Cascadia Code Regular" size="37.0" />
+            <Font name="Cascadia Code Regular" size="32.0" />
          </font>
       </Label>
-      <Label fx:id="MPMLabel" layoutX="270.0" layoutY="147.0" text="MPM : 0.0" textFill="WHITE">
-         <font>
-            <Font name="Cascadia Code Regular" size="21.0" />
-         </font>
-      </Label>
-      <Label fx:id="precisionLabel" layoutX="227.0" layoutY="200.0" text="Precision : 0.0%" textFill="WHITE">
+      <Label fx:id="LevelLabel" layoutX="220.0" layoutY="145.0" text="Niveau atteint: 0" textFill="WHITE">
          <font>
             <Font name="Cascadia Code Regular" size="21.0" />
          </font>
       </Label>
-      <Label fx:id="regularityLabel" layoutX="221.0" layoutY="268.0" text="Regularité : 0.0s" textFill="WHITE">
+      <Label fx:id="wordsLabel" layoutX="158.0" layoutY="200.0" text="Mots correctement tapées: 0" textFill="WHITE">
+         <font>
+            <Font name="Cascadia Code Regular" size="21.0" />
+         </font>
+      </Label>
+      <Label fx:id="playTimeLabel" layoutX="189.0" layoutY="255.0" text="Temps de jeu: 00:00min" textFill="WHITE">
          <font>
             <Font name="Cascadia Code Regular" size="21.0" />
          </font>
