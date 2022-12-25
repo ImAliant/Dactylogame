@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="640.0" style="-fx-background-color: #1f1f1f;" stylesheets="@../css/style-app.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dactylogame.ResultSceneController">
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="640.0" style="-fx-background-color: #1f1f1f;" stylesheets="@../css/style-app.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dactylogame.controller.ResultNormalSceneController">
    <children>
       <Label fx:id="resultTitleLabel" layoutX="228.0" layoutY="63.0" text="Resultats" textAlignment="CENTER" textFill="WHITE">
          <font>
@@ -29,12 +29,13 @@
             <Font name="Cascadia Code Regular" size="21.0" />
          </font>
       </Label>
-      <Button fx:id="btnQuit" layoutX="423.0" layoutY="344.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="123.0" text="Quitter" textAlignment="CENTER" />
-      <Button fx:id="btnReplay" layoutX="105.0" layoutY="344.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="123.0" text="Rejouer" textAlignment="CENTER" />
+      <Button fx:id="btnQuit" layoutX="453.0" layoutY="344.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="123.0" text="Quitter" textAlignment="CENTER" />
+      <Button fx:id="btnReplay" layoutX="264.0" layoutY="344.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="123.0" text="Rejouer" textAlignment="CENTER" />
       <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="576.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../resources/icon.png" />
          </image>
       </ImageView>
+      <Button fx:id="btnMenu" layoutX="64.0" layoutY="344.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="123.0" text="Menu" textAlignment="CENTER" />
    </children>
 </Pane>

@@ -4,23 +4,22 @@ import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Queue;
 
+import com.dactylogame.controller.OptionsSceneController;
 import com.thedeanda.lorem.LoremIpsum;
 
-public final class GameConfiguration{
-    private static final GameConfiguration instance = null;
+public final class GameNormalConfiguration {
+    private static GameNormalConfiguration instance = null;
 
     private ArrayList<String> words;
     private Queue<String> wordsQueue;
     
-    private int time;
-
-    public static final int TIME_DEFAULT = 60;
+    public static final int TIME = OptionsSceneController.TIME;
+    public static final int NBWORDS = OptionsSceneController.NBWORDS;
 
     // Version par défaut sans choix du nombre de mots.
-    private GameConfiguration() {
-        words = new ArrayList<String>(50);
+    private GameNormalConfiguration() {
+        words = new ArrayList<String>(NBWORDS);
         wordsQueue = new ArrayDeque<String>(15);
-        time = TIME_DEFAULT;
 
         LoremIpsum lorem = LoremIpsum.getInstance();
         for (int i = 0; i < 50; i++) {
@@ -32,9 +31,10 @@ public final class GameConfiguration{
         }
     }
 
-    public static GameConfiguration getInstance() {
+    public static GameNormalConfiguration getInstance() {
         if (instance == null) {
-            return new GameConfiguration();
+            System.out.println("Creating new GameNormalConfiguration instance");
+            instance = new GameNormalConfiguration();
         }
         return instance;
     }
@@ -52,7 +52,7 @@ public final class GameConfiguration{
     }
 
     public int getTime() {
-        return time;
+        return TIME;
     }
 
     public String printWords() {
@@ -61,6 +61,10 @@ public final class GameConfiguration{
             wordsString += word + " ";
         }
         return wordsString;
+    }
+
+    public static void reset() {
+        instance = null;
     }
 
     @Override

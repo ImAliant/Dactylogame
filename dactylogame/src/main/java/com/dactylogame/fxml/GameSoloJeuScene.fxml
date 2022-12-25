@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.TextFlow?>
+<?import org.fxmisc.richtext.TextExt?>
+
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyTyped="#play" prefHeight="400.0" prefWidth="640.0" style="-fx-background-color: #1f1f1f;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dactylogame.GameJeu">
+   <children>
+      <Label fx:id="levelLabel" layoutX="14.0" layoutY="14.0" text="Niveau: 1" textFill="WHITE">
+         <font>
+            <Font name="Cascadia Code Regular" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="wordsTypedLabel" layoutX="14.0" layoutY="37.0" text="Mots tapées: 0" textFill="WHITE">
+         <font>
+            <Font name="Cascadia Code Regular" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="pvLabel" layoutX="29.0" layoutY="61.0" text="0" textFill="WHITE">
+         <font>
+            <Font name="Cascadia Code Regular" size="13.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="576.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/icon.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="lauchGameLabel" layoutX="74.0" layoutY="186.0" onMouseClicked="#lauchGame" text="Cliquez ici pour lancer la partie !" textFill="WHITE">
+         <font>
+            <Font name="Cascadia Code Regular" size="24.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="12.0" fitWidth="12.0" layoutX="14.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/pv_coeur.png" />
+         </image>
+      </ImageView>
+      <TextFlow fx:id="currentWordTextFlow" layoutX="181.0" layoutY="147.0" prefHeight="30.0" prefWidth="279.0">
+         <children>
+            <TextExt fx:id="currentWord" fill="WHITE" style="-fx-font-weight: bold;" text="firstWord" wrappingWidth="128.109375">
+               <font>
+                  <Font name="Cascadia Code Regular" size="26.0" />
+               </font>
+            </TextExt>
+         </children>
+      </TextFlow>
+      <TextFlow fx:id="queueTextFlow" layoutX="74.0" layoutY="179.0" prefHeight="115.0" prefWidth="492.0">
+         <children>
+            <TextExt fx:id="textQueue" fill="WHITE" text="wordQueue">
+               <font>
+                  <Font name="Cascadia Code Regular" size="19.0" />
+               </font>
+            </TextExt>
+         </children>
+      </TextFlow>
+      <Line fx:id="pointerChar" endX="-12.0" layoutX="205.0" layoutY="178.0" startX="-23.0" stroke="ORANGE" />
+      <Label fx:id="playTimeLabel" layoutX="260.0" layoutY="14.0" text="Temps de jeu : 0" textFill="WHITE">
+         <font>
+            <Font name="Cascadia Code Regular" size="13.0" />
+         </font>
+      </Label>
+      <Button id="button" fx:id="quitButton" layoutX="249.0" layoutY="356.0" mnemonicParsing="false" onMouseClicked="#btnQuitterClicked" prefHeight="30.0" prefWidth="143.0" stylesheets="@../css/style-app.css" text="Quitter" />
+   </children>
+</Pane>

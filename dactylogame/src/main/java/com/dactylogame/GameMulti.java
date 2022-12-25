@@ -1,5 +1,5 @@
 package com.dactylogame;
 
-public class GameMulti /*extends Game implements GameMethods*/ {
+public class GameMulti /*implements GameMethods, Initializable*/ {
     
 }
