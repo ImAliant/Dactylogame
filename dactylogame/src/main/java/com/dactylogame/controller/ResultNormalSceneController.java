@@ -2,7 +2,9 @@ package com.dactylogame.controller;
 
 import java.text.DecimalFormat;
 
+import com.dactylogame.App;
 import com.dactylogame.GameNormal;
+import com.dactylogame.GameNormalConfiguration;
 import com.dactylogame.ResultNormal;
 
 import javafx.fxml.FXML;
@@ -20,6 +22,7 @@ public class ResultNormalSceneController {
     @FXML private Pane pane;
     @FXML private Button btnQuit;
     @FXML private Button btnReplay;
+    @FXML private Button btnMenu;
     @FXML private Label resultTitleLabel;
     @FXML private Label MPMLabel;
     @FXML private Label precisionLabel;
@@ -46,6 +49,20 @@ public class ResultNormalSceneController {
                 game = GameNormal.newGame();
                 game.start(new Stage());
                 btnReplay.getScene().getWindow().hide();
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        });
+
+        btnMenu.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent e) -> {
+            try {
+                // Ce bouton permet de retourner sur la fenetre du menu.
+                // Si l'utilisateur clique sur ce bouton cela réinitialise toutes les instances ouvertes précédement.
+                ResultNormal.reset();
+                GameNormal.reset();
+                GameNormalConfiguration.reset();
+
+                App.instance.start(new Stage());
             } catch (Exception e1) {
                 e1.printStackTrace();
             }

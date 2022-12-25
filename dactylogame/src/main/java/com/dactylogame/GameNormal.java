@@ -50,9 +50,9 @@ public class GameNormal implements GameMethods, Initializable {
     /*
      *  Score
      */
-    private static double MPM = 0;
-    private static double precision = 0;
-    private static double regularity = 0;
+    private static double MPM;
+    private static double precision;
+    private static double regularity;
 
     private int caractereUtile = 0;
     private int tempCaraUtile = 0;
@@ -260,7 +260,7 @@ public class GameNormal implements GameMethods, Initializable {
 
     @Override
     public void resultats() {
-        float minute = (float) GameNormalConfiguration.TIME_DEFAULT / 60;
+        float minute = (float) GameNormalConfiguration.TIME / 60;
         MPM = (double)(caractereUtile / minute)/5;
         precision = ((double) caractereUtile / (double) (caractereUtile + error)) * 100;
         regularity = calcRegularity();
@@ -333,6 +333,10 @@ public class GameNormal implements GameMethods, Initializable {
             textQueue.setText(printQueue());
             wordUpdateCounter++;
         }
+    }
+
+    public static void reset() {
+        instance = null;
     }
 
     // Retourne un clone de la file.

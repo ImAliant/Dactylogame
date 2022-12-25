@@ -2,8 +2,10 @@ package com.dactylogame;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Queue;
 
+import com.dactylogame.controller.OptionsSceneController;
 import com.thedeanda.lorem.LoremIpsum;
 
 public class GameJeuConfiguration {
@@ -12,8 +14,8 @@ public class GameJeuConfiguration {
     private ArrayList<String> words;
     private Queue<String> wordsQueue;
 
-    public static final int QUEUE_LENGTH = 15;
-    public static final int PV = 50;
+    public static final int QUEUE_LENGTH = OptionsSceneController.QUEUELENGTH;
+    public static final int PV = OptionsSceneController.PV;
 
     private GameJeuConfiguration() {
         words = new ArrayList<String>(10000);
@@ -28,8 +30,8 @@ public class GameJeuConfiguration {
         wordsQueue.add(words.get(0));
     }
 
-    public static GameJeuConfiguration getInstance() {
-        if (instance == null) {
+    public synchronized static GameJeuConfiguration getInstance() {
+        if (Objects.isNull(instance)) {
             System.out.println("Creating new GameJeuConfiguration instance");
             instance = new GameJeuConfiguration();
         }
@@ -54,6 +56,10 @@ public class GameJeuConfiguration {
             wordsString += word + " ";
         }
         return wordsString;
+    }
+
+    public static void reset() {
+        instance = null;
     }
 
     @Override

@@ -4,6 +4,7 @@ import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Queue;
 
+import com.dactylogame.controller.OptionsSceneController;
 import com.thedeanda.lorem.LoremIpsum;
 
 public final class GameNormalConfiguration {
@@ -12,15 +13,13 @@ public final class GameNormalConfiguration {
     private ArrayList<String> words;
     private Queue<String> wordsQueue;
     
-    private int time;
-
-    public static final int TIME_DEFAULT = 60;
+    public static final int TIME = OptionsSceneController.TIME;
+    public static final int NBWORDS = OptionsSceneController.NBWORDS;
 
     // Version par défaut sans choix du nombre de mots.
     private GameNormalConfiguration() {
-        words = new ArrayList<String>(50);
+        words = new ArrayList<String>(NBWORDS);
         wordsQueue = new ArrayDeque<String>(15);
-        time = TIME_DEFAULT;
 
         LoremIpsum lorem = LoremIpsum.getInstance();
         for (int i = 0; i < 50; i++) {
@@ -53,7 +52,7 @@ public final class GameNormalConfiguration {
     }
 
     public int getTime() {
-        return time;
+        return TIME;
     }
 
     public String printWords() {
@@ -62,6 +61,10 @@ public final class GameNormalConfiguration {
             wordsString += word + " ";
         }
         return wordsString;
+    }
+
+    public static void reset() {
+        instance = null;
     }
 
     @Override

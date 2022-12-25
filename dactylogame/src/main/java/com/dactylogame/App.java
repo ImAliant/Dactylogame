@@ -15,9 +15,12 @@ import javafx.stage.Stage;
  * JavaFX App
  */
 public class App extends Application {
+    public static App instance = null;
 
     @Override
     public void start(Stage stage) {
+        instance = new App();
+
         Parent root;
         try {
             URL url = new File("src/main/java/com/dactylogame/fxml/MainScene.fxml").toURI().toURL();

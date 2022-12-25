@@ -25,7 +25,7 @@ public class ResultJeuSolo {
         this.playTime = game.getPlayTime();
     }
 
-    public static ResultJeuSolo getInstance() {
+    public synchronized static ResultJeuSolo getInstance() {
         if (instance == null) {
             System.out.println("Creating new ResultJeuSolo instance");
             instance = new ResultJeuSolo();

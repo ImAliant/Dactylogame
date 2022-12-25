@@ -1,6 +1,8 @@
 package com.dactylogame.controller;
 
+import com.dactylogame.App;
 import com.dactylogame.GameJeu;
+import com.dactylogame.GameJeuConfiguration;
 import com.dactylogame.ResultJeuSolo;
 
 import javafx.fxml.FXML;
@@ -17,6 +19,7 @@ public class ResultJeuSoloSceneController {
 
     @FXML private Pane pane;
     @FXML private Button btnQuit;
+    @FXML private Button btnMenu;
     @FXML private Button btnReplay;
     @FXML private Label LevelLabel;
     @FXML private Label playTimeLabel;
@@ -41,6 +44,20 @@ public class ResultJeuSoloSceneController {
                 game = GameJeu.newGame();
                 game.start(new Stage());
                 btnReplay.getScene().getWindow().hide();
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        });
+
+        btnMenu.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent e) -> {
+            try {
+                // Ce bouton permet de retourner sur la fenetre du menu.
+                // Si l'utilisateur clique sur ce bouton cela réinitialise toutes les instances ouvertes précédement.
+                ResultJeuSolo.reset();
+                GameJeu.reset();
+                GameJeuConfiguration.reset();
+
+                App.instance.start(new Stage());
             } catch (Exception e1) {
                 e1.printStackTrace();
             }

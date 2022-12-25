@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.Objects;
 import java.util.Queue;
 import java.util.ResourceBundle;
 
@@ -52,9 +53,9 @@ public class GameJeu implements GameMethods, Initializable {
     private int wordsCorrectlyTypedTotal = 0;
     private int playTime = 0;
 
-    private int level;
-    private int wordsCorrectlyTyped;
-    private int time;
+    private static int level;
+    private static int wordsCorrectlyTyped;
+    private static int time;
 
     private static boolean replay = false;
 
@@ -81,8 +82,8 @@ public class GameJeu implements GameMethods, Initializable {
         pv = GameJeuConfiguration.PV;
     }
 
-    public static GameJeu getInstance() {
-        if (instance == null) {
+    public synchronized static GameJeu getInstance() {
+        if (Objects.isNull(instance)) {
             System.out.println("Creating new GameJeu instance");
             instance = new GameJeu();
         }
@@ -106,7 +107,7 @@ public class GameJeu implements GameMethods, Initializable {
         word = wordsQueue.peek();
 
         levelLabel.setText("Niveau: " + niveau);
-        pvLabel.setText("PV: " + pv);
+        pvLabel.setText(Integer.toString(pv));
         wordsTypedLabel.setText("Mots tapés: " + wordsCorrectlyTypedTotal);
         playTimeLabel.setText("Temps de jeu: " + playTime);
         currentWord.setText(word);
@@ -162,7 +163,7 @@ public class GameJeu implements GameMethods, Initializable {
             charPointer = 0;
             if(checkError()) {
                pv -= errorWord;
-               pvLabel.setText("PV: " + pv);
+               pvLabel.setText(Integer.toString(pv));
             }
             else {
                 wordsCorrectlyTypedTemp++;
@@ -250,7 +251,7 @@ public class GameJeu implements GameMethods, Initializable {
                     if (queueLength == GameJeuConfiguration.QUEUE_LENGTH) {
                         // On enleve une vie pour chaque caractere restant.
                         pv -= (word.length() - charPointer)-1 ;
-                        pvLabel.setText("PV: " + pv);
+                        pvLabel.setText(Integer.toString(pv));
                         updateWord();
                     }
                     if (wordsCorrectlyTypedTemp % 100 == 0 && wordsCorrectlyTypedTemp != 0) {
@@ -333,6 +334,10 @@ public class GameJeu implements GameMethods, Initializable {
             sb.append(" ");
         }
         return sb.toString();
+    }
+
+    public static void reset() {
+        instance = null;
     }
     
     public int getLevel() {
