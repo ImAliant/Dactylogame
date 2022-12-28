@@ -156,7 +156,10 @@ public class GameJeu implements GameMethods, Initializable {
 
     private void updateCurrentWord(KeyEvent event) {
         if (event.getCharacter().charAt(0) == 32) {
-            currentWord.setStyle("-fx-fill: #ffffff; -fx-font-weight: bold;");
+            if (configuration.getBonusWords().get(wordUpdateCounter-1) == 1)
+                currentWord.setStyle("-fx-fill: #1e88e5; -fx-font-weight: bold;");
+            else 
+                currentWord.setStyle("-fx-fill: #ffffff; -fx-font-weight: bold;");
 
             pointerChar.setLayoutX(205);
 
@@ -168,6 +171,10 @@ public class GameJeu implements GameMethods, Initializable {
             else {
                 wordsCorrectlyTypedTemp++;
                 wordsCorrectlyTypedTotal++;
+                if (configuration.getBonusWords().get(wordUpdateCounter-1) == 1 && pv < GameJeuConfiguration.PV) {
+                    pv += (word.length() + pv < GameJeuConfiguration.PV) ? word.length() : GameJeuConfiguration.PV - pv;
+                    pvLabel.setText(Integer.toString(pv));
+                }
                 wordsTypedLabel.setText("Mots tapés: " + wordsCorrectlyTypedTotal);
             }
             errorWord = 0;

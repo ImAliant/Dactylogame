@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 
+import com.dactylogame.serveur_client.Server;
+
 import javafx.fxml.FXMLLoader;
 import javafx.application.Application;
 import javafx.scene.Parent;
@@ -16,6 +18,8 @@ import javafx.stage.Stage;
  */
 public class App extends Application {
     public static App instance = null;
+
+    private static boolean serverStarted = false;
 
     @Override
     public void start(Stage stage) {

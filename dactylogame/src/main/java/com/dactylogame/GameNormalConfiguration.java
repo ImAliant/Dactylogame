@@ -4,7 +4,7 @@ import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Queue;
 
-import com.dactylogame.controller.OptionsSceneController;
+import com.dactylogame.controller.MainSceneController;
 import com.thedeanda.lorem.LoremIpsum;
 
 public final class GameNormalConfiguration {
@@ -13,8 +13,8 @@ public final class GameNormalConfiguration {
     private ArrayList<String> words;
     private Queue<String> wordsQueue;
     
-    public static final int TIME = OptionsSceneController.TIME;
-    public static final int NBWORDS = OptionsSceneController.NBWORDS;
+    public static final int TIME = MainSceneController.TIME;
+    public static final int NBWORDS = MainSceneController.NBWORDS;
 
     // Version par défaut sans choix du nombre de mots.
     private GameNormalConfiguration() {

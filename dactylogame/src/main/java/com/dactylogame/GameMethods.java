@@ -9,6 +9,8 @@ public interface GameMethods {
 
     public String printQueue();
 
+    //public Game newGame();
+
     default void endGame() {
         System.out.println("Fin du jeu");
         System.exit(0);

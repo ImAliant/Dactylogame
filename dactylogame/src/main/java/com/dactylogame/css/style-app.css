@@ -1,7 +1,7 @@
 .button {
     -fx-background-color: #272B2B;
     -fx-text-fill: #FFFFFF;
-    -fx-font-size: 15px;
+    -fx-font-size: 12px;
     -fx-font-weight: bold;
     -fx-font-family: "Cascadia Code";
     
@@ -9,7 +9,7 @@
 .button:hover {
     -fx-background-color: #191C1C;
     -fx-text-fill: #FFFFFF;
-    -fx-font-size: 15px;
+    -fx-font-size: 12px;
     -fx-font-weight: bold;
     -fx-font-family: "Cascadia Code";
 }

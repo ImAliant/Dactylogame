@@ -1,7 +1,10 @@
 SOLO : Mode normal -> FAIT
-SOLO : Mode Jeu -> A faire (en cours)
-   |-> TROUVER L'ERREUR QUI EMPECHE RESULTJEUSOLO DE RECUPERER LES VARIABLES DE GAMEJEU.
-   
-|-> Faire un singleton builder pour les configurations de jeu pour qu'on puisse choisir la config dans les options de jeu.
+SOLO : Mode Jeu -> FAIT
+MULTI : Mode Jeu -> A faire (en cours)
+   |-> On doit créer une architecture client/serveur.
+   |-> Le mode de jeu sera le même que le mode jeu solo.
+   |-> Les joueurs pourront se connecter à un serveur.
+   |-> Le serveur ne pourra pas lancer plusieurs parti en même temps.
+   |-> L'arrivé des mots sera sur 1 mot toutes les 2 secondes. Le joueur adverse pourra envoyer un mot si celui ci est en rouge.
 
-MULTI : Mode Jeu -> A faire
+   Donc 1) Créer une architecture client/serveur.

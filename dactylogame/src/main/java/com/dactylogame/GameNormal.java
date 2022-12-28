@@ -12,6 +12,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Line;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 
@@ -42,6 +43,7 @@ public class GameNormal implements GameMethods, Initializable {
     private int charPointer = 0;
     private int error = 0;
     private int errorWord = 0;
+    private int appuiTouche = 0;
     private String word;
     private boolean isLauched = false;
     private Timer timer;
@@ -75,6 +77,7 @@ public class GameNormal implements GameMethods, Initializable {
     @FXML private Label errorLabel;
     @FXML private Label lauchGameLabel;
     @FXML private Line pointerChar;
+    @FXML private Rectangle contourTextFlow;
 
     public GameNormal() {
         this.gameConfiguration = GameNormalConfiguration.getInstance();
@@ -118,6 +121,7 @@ public class GameNormal implements GameMethods, Initializable {
         textQueue.setVisible(false);
         textFlow.setVisible(false);
         pointerChar.setVisible(false);
+        contourTextFlow.setVisible(false);
     }
 
     // Charge la scene depuis le dossier fxml et l'affiche sur l'écran.
@@ -163,7 +167,7 @@ public class GameNormal implements GameMethods, Initializable {
         if (event.getCharacter().charAt(0) == 32) {
             firstWord.setStyle("-fx-fill: #ffffff; -fx-font-weight: bold;");
             
-            pointerChar.setLayoutX(124);
+            pointerChar.setLayoutX(345);
             
             charPointer = 0;
             if (checkError()) {
@@ -182,7 +186,7 @@ public class GameNormal implements GameMethods, Initializable {
                 if (errorWord == 1)
                     firstWord.setStyle("-fx-fill: #ffffff; -fx-font-weight: bold;");
 
-                pointerChar.setLayoutX(pointerChar.getLayoutX() - 12);
+                pointerChar.setLayoutX(pointerChar.getLayoutX() - 13);
 
                 charPointer--;
                 tempCaraUtile--;
@@ -215,7 +219,8 @@ public class GameNormal implements GameMethods, Initializable {
                     errorWord++;
                     errorLabel.setText("Erreurs: " + error);
                 }
-                pointerChar.setLayoutX(pointerChar.getLayoutX() + 12);
+                pointerChar.setLayoutX(pointerChar.getLayoutX() + 13);
+                appuiTouche++;
             }
         }
     }
@@ -235,6 +240,7 @@ public class GameNormal implements GameMethods, Initializable {
         textQueue.setVisible(true);
         textFlow.setVisible(true);
         pointerChar.setVisible(true);
+        contourTextFlow.setVisible(true);
 
         time = GameNormalConfiguration.getInstance().getTime();
 
@@ -262,7 +268,7 @@ public class GameNormal implements GameMethods, Initializable {
     public void resultats() {
         float minute = (float) GameNormalConfiguration.TIME / 60;
         MPM = (double)(caractereUtile / minute)/5;
-        precision = ((double) caractereUtile / (double) (caractereUtile + error)) * 100;
+        precision = ((double) caractereUtile / (double) (appuiTouche)) * 100;
         regularity = calcRegularity();
 
         openResultScene();
