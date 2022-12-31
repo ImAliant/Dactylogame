@@ -14,20 +14,66 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+/**
+ * Classe correspondant au contrôleur de la fenêtre de résultat du jeu normal.
+ * 
+ * @author DIAMANT Alexandre
+ */
 public class ResultNormalSceneController {
 
+    /**
+     * Instance de la classe GameNormal.
+     */
     private GameNormal game;
+    /**
+     * Instance de la classe ResultNormal.
+     */
     private ResultNormal result;
 
+    /**
+     * Panneau principal.
+     */
     @FXML private Pane pane;
+    /**
+     * Bouton qui permet de quitter le jeu.
+     */
     @FXML private Button btnQuit;
+    /**
+     * Bouton qui permet de rejouer.
+     */
     @FXML private Button btnReplay;
+    /**
+     * Bouton qui permet de retourner sur la fenêtre du menu.
+     */
     @FXML private Button btnMenu;
+    /**
+     * Affiche le titre de la fenêtre.
+     */
     @FXML private Label resultTitleLabel;
+    /**
+     * Affiche le MPM du joueur sur la fenêtre de résultat.
+     */
     @FXML private Label MPMLabel;
+    /**
+     * Affiche la précision du joueur sur la fenêtre de résultat.
+     */
     @FXML private Label precisionLabel;
+    /**
+     * Affiche l'ecart type du joueur sur la fenêtre de résultat.
+     */
     @FXML private Label regularityLabel;
 
+    /**
+     * Méthode qui initialise la fenêtre de résultat du jeu normal.
+     * 
+     * @see GameNormal
+     * @see ResultNormal
+     * @see #MPMLabel
+     * @see #precisionLabel
+     * @see #regularityLabel
+     * @see #btnQuit
+     * @see #btnReplay
+     */
     public void initialize() {
         game = GameNormal.getInstance();
         result = ResultNormal.getInstance();

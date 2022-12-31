@@ -6,6 +6,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.TextFlow?>
 <?import org.fxmisc.richtext.TextExt?>
@@ -42,30 +43,31 @@
             <Image url="@../resources/pv_coeur.png" />
          </image>
       </ImageView>
-      <TextFlow fx:id="currentWordTextFlow" layoutX="181.0" layoutY="147.0" prefHeight="30.0" prefWidth="279.0">
-         <children>
-            <TextExt fx:id="currentWord" fill="WHITE" style="-fx-font-weight: bold;" text="firstWord" wrappingWidth="128.109375">
-               <font>
-                  <Font name="Cascadia Code Regular" size="26.0" />
-               </font>
-            </TextExt>
-         </children>
-      </TextFlow>
-      <TextFlow fx:id="queueTextFlow" layoutX="74.0" layoutY="179.0" prefHeight="115.0" prefWidth="492.0">
-         <children>
-            <TextExt fx:id="textQueue" fill="WHITE" text="wordQueue">
-               <font>
-                  <Font name="Cascadia Code Regular" size="19.0" />
-               </font>
-            </TextExt>
-         </children>
-      </TextFlow>
-      <Line fx:id="pointerChar" endX="-12.0" layoutX="205.0" layoutY="178.0" startX="-23.0" stroke="ORANGE" />
       <Label fx:id="playTimeLabel" layoutX="260.0" layoutY="14.0" text="Temps de jeu : 0" textFill="WHITE">
          <font>
             <Font name="Cascadia Code Regular" size="13.0" />
          </font>
       </Label>
       <Button id="button" fx:id="quitButton" layoutX="249.0" layoutY="356.0" mnemonicParsing="false" onMouseClicked="#btnQuitterClicked" prefHeight="30.0" prefWidth="143.0" stylesheets="@../css/style-app.css" text="Quitter" />
+      <Pane fx:id="writingZonePane" layoutX="100.0" layoutY="155.0" prefHeight="111.0" prefWidth="460.0">
+         <children>
+            <Rectangle fx:id="contourTextFlow" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="105.0" layoutX="1.0" layoutY="2.0" stroke="WHITE" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeWidth="2.0" width="455.0" />
+            <TextFlow fx:id="textFlow" layoutX="7.0" layoutY="7.0" prefHeight="95.0" prefWidth="443.0" stylesheets="@../css/style-app.css">
+               <children>
+                  <TextExt fx:id="currentWord" fill="WHITE" style="-fx-font-weight: bold;" text="firstWord" wrappingWidth="128.109375">
+                     <font>
+                        <Font name="Cascadia Code Regular" size="21.0" />
+                     </font>
+                  </TextExt>
+                  <TextExt fx:id="textQueue" fill="WHITE" text="wordQueue">
+                     <font>
+                        <Font name="Cascadia Code Regular" size="19.0" />
+                     </font>
+                  </TextExt>
+               </children>
+            </TextFlow>
+            <Line fx:id="pointerChar" endX="-12.0" layoutX="28.0" layoutY="30.0" startX="-20.0" stroke="ORANGE" />
+         </children>
+      </Pane>
    </children>
 </Pane>

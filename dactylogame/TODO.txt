@@ -1,10 +1,9 @@
-SOLO : Mode normal -> FAIT
-SOLO : Mode Jeu -> FAIT
-MULTI : Mode Jeu -> A faire (en cours)
-   |-> On doit créer une architecture client/serveur.
-   |-> Le mode de jeu sera le même que le mode jeu solo.
-   |-> Les joueurs pourront se connecter à un serveur.
-   |-> Le serveur ne pourra pas lancer plusieurs parti en même temps.
-   |-> L'arrivé des mots sera sur 1 mot toutes les 2 secondes. Le joueur adverse pourra envoyer un mot si celui ci est en rouge.
-
-   Donc 1) Créer une architecture client/serveur.
+COMMENTAIRE javadoc : 
+- App : Fait
+- GameJeu : Fait
+- GameJeuConfiguration : a faire
+- GameMethods : Fait
+- GameNormal : a faire
+- GameNormalConfiguration : a faire
+- ResultJeuSolo : a faire
+- ResultNormal : a faire

@@ -11,9 +11,9 @@
 <?import javafx.scene.text.TextFlow?>
 <?import org.fxmisc.richtext.TextExt?>
 
-<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyTyped="#play" prefHeight="600.0" prefWidth="1080.0" style="-fx-background-color: #1f1f1f;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dactylogame.GameNormal">
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyTyped="#play" prefHeight="400.0" prefWidth="640.0" style="-fx-background-color: #1f1f1f;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dactylogame.GameNormal">
    <children>
-      <Button id="button" fx:id="btnQuitter" layoutX="460.0" layoutY="536.0" mnemonicParsing="false" onMouseClicked="#btnQuitterClicked" prefHeight="50.0" prefWidth="160.0" stylesheets="@../css/style-app.css" text="Quitter" />
+      <Button id="button" fx:id="btnQuitter" layoutX="249.0" layoutY="349.0" mnemonicParsing="false" onMouseClicked="#btnQuitterClicked" prefHeight="30.0" prefWidth="143.0" stylesheets="@../css/style-app.css" text="Quitter" />
       <Label fx:id="timeLabel" layoutX="14.0" layoutY="14.0" prefHeight="16.0" prefWidth="298.0" style="-fx-text-fill: #ffffff;" text="Temps :">
          <font>
             <Font name="Cascadia Code Regular" size="13.0" />
@@ -22,30 +22,34 @@
          <font>
             <Font name="Cascadia Code Regular" size="13.0" />
          </font></Label>
-      <Label fx:id="lauchGameLabel" layoutX="294.0" layoutY="286.0" onMouseClicked="#lauchGame" prefHeight="29.0" prefWidth="494.0" style="-fx-text-fill: #ffffff;" text="Cliquez ici pour lancer la partie !">
+      <Label fx:id="lauchGameLabel" layoutX="73.0" layoutY="186.0" onMouseClicked="#lauchGame" prefHeight="29.0" prefWidth="494.0" style="-fx-text-fill: #ffffff;" text="Cliquez ici pour lancer la partie !">
          <font>
             <Font name="Cascadia Code Regular" size="24.0" />
          </font></Label>
-      <TextFlow fx:id="textFlow" layoutX="323.0" layoutY="207.0" prefHeight="186.0" prefWidth="435.0" stylesheets="@../css/style-app.css">
-         <children>
-            <TextExt id="text" fx:id="firstWord" fill="WHITE" style="-fx-font-weight: bold;" text="firstWord" textAlignment="CENTER" wrappingWidth="76.0">
-               <font>
-                  <Font name="Cascadia Code Regular" size="21.0" />
-               </font>
-            </TextExt>
-            <TextExt id="text" fx:id="textQueue" fill="WHITE" text="wordsQueue" textAlignment="CENTER" wrappingWidth="337.265625">
-               <font>
-                  <Font size="19.0" />
-               </font>
-            </TextExt>
-         </children>
-      </TextFlow>
-      <Line fx:id="pointerChar" endX="-12.0" layoutX="345.0" layoutY="230.0" startX="-20.0" stroke="ORANGE" />
-      <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="1016.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="576.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../resources/icon.png" />
          </image>
       </ImageView>
-      <Rectangle fx:id="contourTextFlow" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="105.0" layoutX="317.0" layoutY="201.0" stroke="WHITE" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeWidth="2.0" width="455.0" />
+      <Pane fx:id="writingZonePane" layoutX="90.0" layoutY="145.0" prefHeight="111.0" prefWidth="460.0">
+         <children>
+            <Rectangle fx:id="contourTextFlow" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="105.0" layoutX="1.0" layoutY="2.0" stroke="WHITE" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeWidth="2.0" width="455.0" />
+            <TextFlow fx:id="textFlow" layoutX="7.0" layoutY="7.0" prefHeight="95.0" prefWidth="443.0" stylesheets="@../css/style-app.css">
+               <children>
+                  <TextExt id="text" fx:id="firstWord" fill="WHITE" style="-fx-font-weight: bold;" text="firstWord" textAlignment="CENTER" wrappingWidth="76.0">
+                     <font>
+                        <Font name="Cascadia Code Regular" size="21.0" />
+                     </font>
+                  </TextExt>
+                  <TextExt id="text" fx:id="textQueue" fill="WHITE" text="wordsQueue" textAlignment="CENTER" wrappingWidth="337.265625">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </TextExt>
+               </children>
+            </TextFlow>
+            <Line fx:id="pointerChar" endX="-12.0" layoutX="28.0" layoutY="30.0" startX="-20.0" stroke="ORANGE" />
+         </children>
+      </Pane>
    </children>
 </Pane>

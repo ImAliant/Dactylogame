@@ -7,17 +7,17 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1080.0" style="-fx-background-color: #1f1f1f;" stylesheets="@../css/style-app.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dactylogame.controller.ResultNormalSceneController">
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="640.0" style="-fx-background-color: #1f1f1f;" stylesheets="@../css/style-app.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dactylogame.controller.ResultNormalSceneController">
    <children>
-      <Button fx:id="btnQuit" layoutX="756.0" layoutY="515.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="175.0" text="Quitter" textAlignment="CENTER" />
-      <Button fx:id="btnReplay" layoutX="453.0" layoutY="515.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="175.0" text="Rejouer" textAlignment="CENTER" />
-      <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="1016.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <Button fx:id="btnQuit" layoutX="451.0" layoutY="346.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="175.0" text="Quitter" textAlignment="CENTER" />
+      <Button fx:id="btnReplay" layoutX="233.0" layoutY="346.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="175.0" text="Rejouer" textAlignment="CENTER" />
+      <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="576.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../resources/icon.png" />
          </image>
       </ImageView>
-      <Button fx:id="btnMenu" layoutX="150.0" layoutY="515.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="175.0" text="Menu" textAlignment="CENTER" />
-      <Pane layoutX="441.0" layoutY="168.0" prefHeight="264.0" prefWidth="200.0">
+      <Button fx:id="btnMenu" layoutX="14.0" layoutY="346.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="175.0" text="Menu" textAlignment="CENTER" />
+      <Pane layoutX="220.0" layoutY="94.0" prefHeight="213.0" prefWidth="200.0">
          <children>
             <Label fx:id="MPMLabel" layoutX="44.0" layoutY="75.0" text="MPM : 0.0" textFill="WHITE">
                <font>
@@ -34,14 +34,14 @@
                   <Font name="Cascadia Code Regular" size="21.0" />
                </font>
             </Label>
-            <Label fx:id="resultTitleLabel" layoutX="45.0" text="RECAP" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="resultTitleLabel" layoutX="63.0" layoutY="14.0" text="RECAP" textAlignment="CENTER" textFill="WHITE">
                <font>
-                  <Font name="Cascadia Code Regular" size="37.0" />
+                  <Font name="Cascadia Code Regular" size="25.0" />
                </font>
             </Label>
          </children>
       </Pane>
-      <Label layoutX="424.0" layoutY="18.0" text="DactyloGame" textFill="WHITE">
+      <Label layoutX="209.0" layoutY="18.0" text="DactyloGame" textFill="WHITE">
          <font>
             <Font name="Cascadia Code Regular" size="36.0" />
          </font>
