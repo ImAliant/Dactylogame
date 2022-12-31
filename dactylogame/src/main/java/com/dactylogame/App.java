@@ -8,18 +8,29 @@ import javafx.fxml.FXMLLoader;
 import javafx.application.Application;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-//import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
- * JavaFX App
+ * Cette classe est le point d'entrée de l'application.
+ * Elle permet de lancer l'application et de charger le fichier FXML de la fenêtre principale.
+ * Elle est aussi utilisée pour accéder à l'instance de l'application.
+ * 
+ * @author DIAMANT Alexandre
  */
 public class App extends Application {
     public static App instance = null;
 
+    /**
+     * Cette méthode est appelée par la méthode launch() de la classe Application.
+     * Elle permet de charger le fichier FXML de la fenêtre principale.
+     * 
+     * @param stage La fenêtre principale de l'application.
+     * 
+     * @throws IOException Si le fichier FXML n'a pas pu être chargé.
+     */
     @Override
     public void start(Stage stage) {
-        instance = new App();
+        instance = this;
 
         Parent root;
         try {
@@ -28,11 +39,6 @@ public class App extends Application {
             Scene scene = new Scene(root);
             
             stage.setTitle("Dactylogame");
-            /*try {
-                stage.getIcons().add(new Image(App.class.getResourceAsStream("dactylogame/src/main/java/com/dactylogame/resources/icon.jpg")));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }*/
             stage.setScene(scene);
             stage.setResizable(false);
             stage.show();
@@ -42,6 +48,11 @@ public class App extends Application {
         }
     }
 
+    /**
+     * Lance l'application.
+     * 
+     * @param args
+     */
     public static void main(String[] args) {
         launch();
     }

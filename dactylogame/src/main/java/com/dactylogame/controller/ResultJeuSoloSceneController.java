@@ -12,20 +12,67 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+/**
+ * Classe correspondant au contrôleur de la fenêtre de résultat du jeu solo.
+ * 
+ * @author DIAMANT Alexandre
+ */
 public class ResultJeuSoloSceneController {
     
+    /**
+     * Instance de la classe GameJeu.
+     */
     private GameJeu game;
+    /**
+     * Instance de la classe ResultJeuSolo.
+     */
     private ResultJeuSolo result;
 
+    /**
+     * Panneau principal.
+     */
     @FXML private Pane pane;
+    /**
+     * Bouton qui permet de quitter le jeu.
+     */
     @FXML private Button btnQuit;
+    /**
+     * Bouton qui permet de retourner sur la fenêtre du menu.
+     */
     @FXML private Button btnMenu;
+    /**
+     * Bouton qui permet de rejouer.
+     */
     @FXML private Button btnReplay;
+    /**
+     * Label qui affiche le niveau atteint.
+     */
     @FXML private Label LevelLabel;
+    /**
+     * Label qui affiche le temps de jeu.
+     */
     @FXML private Label playTimeLabel;
+    /**
+     * Label qui affiche le titre du résultat.
+     */
     @FXML private Label resultTitleLabel;
+    /**
+     * Label qui affiche le nombre de mots correctement tapés.
+     */
     @FXML private Label wordsLabel;
 
+    /**
+     * Méthode qui permet d'initialiser les éléments de la fenêtre.
+     * 
+     * @see GameJeu
+     * @see ResultJeuSolo
+     * @see #LevelLabel
+     * @see #playTimeLabel
+     * @see #wordsLabel
+     * @see #btnQuit
+     * @see #btnReplay
+     * @see #btnMenu
+     */
     public void initialize() {
         game = GameJeu.getInstance();
         result = ResultJeuSolo.getInstance();
@@ -64,6 +111,12 @@ public class ResultJeuSoloSceneController {
         });
     }
 
+    /**
+     * Méthode qui permet de convertir les secondes en minutes.
+     * 
+     * @param seconds Nombre de secondes.
+     * @return Le temps en minutes.
+     */
     public String secondsToMinutes(int seconds) {
         int minutes = seconds / 60;
         int restSeconds = seconds % 60;
