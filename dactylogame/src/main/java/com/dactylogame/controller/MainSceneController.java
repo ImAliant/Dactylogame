@@ -7,6 +7,7 @@ import com.dactylogame.Game;
 import com.dactylogame.GameJeu;
 import com.dactylogame.GameNormal;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -222,7 +223,24 @@ public class MainSceneController {
      */
     @FXML
     private void btnQuitterClicked(MouseEvent event) {
-        System.exit(0);
+        Platform.exit();
+    }
+
+    // Setters statiques pour les tests unitaires
+    public static void setTime(int time) {
+        TIME = time;
+    }
+
+    public static void setNbWords(int nbWords) {
+        NBWORDS = nbWords;
+    }
+
+    public static void setPv(int pv) {
+        PV = pv;
+    }
+
+    public static void setQueueLength(int queueLength) {
+        QUEUELENGTH = queueLength;
     }
 }
 

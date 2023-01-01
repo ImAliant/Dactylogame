@@ -9,7 +9,7 @@ import javafx.stage.Stage;
  * 
  * @author DIAMANT Alexandre
  */
-public sealed abstract class Result permits ResultJeuSolo, ResultNormal {
+public sealed interface Result permits ResultJeuSolo, ResultNormal {
 
     /**
      * Méthode permettant de lancer la fenêtre de résultat.

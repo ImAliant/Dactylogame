@@ -11,7 +11,7 @@ import javafx.stage.Stage;
  * 
  * @author DIAMANT Alexandre
  */
-public sealed abstract class Game implements Initializable permits GameNormal, GameJeu {
+public sealed interface Game extends Initializable permits GameJeu, GameNormal {
 
     /**
      * Ouvre la fenêtre du mode jeu selectionné par l'utilisateur.
@@ -19,7 +19,7 @@ public sealed abstract class Game implements Initializable permits GameNormal, G
      * @param stage La fenêtre principale de l'application.
      * @throws IOException Si le fichier FXML n'a pas pu être chargé.
      */
-    public void start(Stage stage) throws IOException {}
+    public abstract void start(Stage stage) throws IOException;
     /**
      * Teste si les lettres entrées par l'utilisateur sont correctes.
      * 

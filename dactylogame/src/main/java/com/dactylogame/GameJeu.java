@@ -45,7 +45,7 @@ import javafx.stage.Stage;
  * 
  * @author DIAMANT Alexandre
  */
-public final class GameJeu extends Game {
+public final class GameJeu implements Game {
     /**
      * Instance du jeu.
      * 
@@ -445,7 +445,7 @@ public final class GameJeu extends Game {
      */
     @FXML
     private void btnQuitterClicked(MouseEvent event) {
-        System.exit(0);
+        Platform.exit();
     }
 
     /**

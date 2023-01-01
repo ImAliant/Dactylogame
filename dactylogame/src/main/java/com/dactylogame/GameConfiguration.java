@@ -9,13 +9,13 @@ import java.util.Queue;
  * 
  * @author DIAMANT Alexandre
  */
-public sealed abstract class GameConfiguration permits GameNormalConfiguration, GameJeuConfiguration {
+public sealed interface GameConfiguration permits GameJeuConfiguration, GameNormalConfiguration {
     /**
      * Affiche la liste de mots.
      * 
      * @return Une concaténation des mots de la liste de mots.
      */
-    public String printWords() {
+    default String printWords() {
         String wordsString = "";
         for (String word : getWords()) {
             wordsString += word + " ";

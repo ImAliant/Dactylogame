@@ -15,7 +15,7 @@ import javafx.stage.Stage;
  * 
  * @author DIAMANT Alexandre
  */
-public final class ResultJeuSolo extends Result {
+public final class ResultJeuSolo implements Result {
     /**
      * Instance de la classe ResultJeuSolo.
      */

@@ -43,7 +43,7 @@ import org.fxmisc.richtext.*;
  * 
  * @author DIAMANT Alexandre
  */
-public final class GameNormal extends Game {
+public final class GameNormal implements Game {
     /**
      * Instance du jeu.
      */
@@ -219,6 +219,12 @@ public final class GameNormal extends Game {
         wordsQueue = gameConfiguration.getWordsQueue();
         wordUpdateCounter = wordsQueue.size();
         nb_words = gameConfiguration.getWords().size();
+
+        word = wordsQueue.peek();
+        for (int i = 0; i < 100; i++) {
+            posErrorDefault.add(0);
+            posError.add(0);
+        }
     }
 
     /**
@@ -272,12 +278,6 @@ public final class GameNormal extends Game {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        word = wordsQueue.peek();
-        for (int i = 0; i < 100; i++) {
-            posErrorDefault.add(0);
-            posError.add(0);
-        }
-
         timeLabel.setText("Temps restant: " + 0);
         errorLabel.setText("Erreurs: " + error);
         firstWord.setText(word + " ");
@@ -432,7 +432,7 @@ public final class GameNormal extends Game {
     */
     @FXML
     private void btnQuitterClicked(MouseEvent event) {
-        System.exit(0);
+        Platform.exit();
     }
 
     /**
@@ -443,7 +443,7 @@ public final class GameNormal extends Game {
      * @param event clique souris sur le label
      */
     @FXML
-    private void lauchGame(MouseEvent event) {
+    public void lauchGame(MouseEvent event) {
         isLauched = true;
         lauchGameLabel.setVisible(false);
         firstWord.setVisible(true);
@@ -630,6 +630,38 @@ public final class GameNormal extends Game {
 
     public String getWord() {
         return word;
+    }
+
+    // PARTIE POUR TESTS UNITAIRES
+    /**
+     * Même méthode que {@link #lauchGame()} mais attendre un clique sur le label.
+     */
+    public void lauchTest() {
+        isLauched = true;
+        lauchGameLabel.setVisible(false);
+        firstWord.setVisible(true);
+        textQueue.setVisible(true);
+        textFlow.setVisible(true);
+        pointerChar.setVisible(true);
+        contourTextFlow.setVisible(true);
+        writingZonePane.setVisible(true);
+
+        time = GameNormalConfiguration.getInstance().getTime();
+
+        timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
+            public void run() {
+                Platform.runLater(new Runnable() {
+                public void run() {
+                    updateTimeLabel();
+                }
+            });
+        }
+        }, 0, 1000);
+    }
+
+    public void handle(KeyEvent event) {
+        play(event);
     }
 }
 

@@ -5,6 +5,7 @@ import com.dactylogame.GameJeu;
 import com.dactylogame.GameJeuConfiguration;
 import com.dactylogame.ResultJeuSolo;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -82,7 +83,7 @@ public class ResultJeuSoloSceneController {
         wordsLabel.setText("Mots correctement tapés: " + result.getWordsCorrectlyTyped());
 
         btnQuit.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent e) -> {
-            System.exit(0);
+            Platform.exit();
         });
 
         btnReplay.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent e) -> {

@@ -7,6 +7,7 @@ import com.dactylogame.GameNormal;
 import com.dactylogame.GameNormalConfiguration;
 import com.dactylogame.ResultNormal;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -86,7 +87,7 @@ public class ResultNormalSceneController {
         regularityLabel.setText("Regularité : " + f.format(result.getRegularity()) + "s");
 
         btnQuit.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent e) -> {
-            System.exit(0);
+            Platform.exit();
         });
         
         btnReplay.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent e) -> {

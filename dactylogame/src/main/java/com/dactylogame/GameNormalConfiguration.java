@@ -2,6 +2,7 @@ package com.dactylogame;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Queue;
 
 import com.dactylogame.controller.MainSceneController;
@@ -12,7 +13,7 @@ import com.thedeanda.lorem.LoremIpsum;
  * 
  * @author DIAMANT Alexandre
  */
-public final class GameNormalConfiguration extends GameConfiguration {
+public final class GameNormalConfiguration implements GameConfiguration {
     /**
      * Instance de la classe GameNormalConfiguration.
      */
@@ -67,7 +68,7 @@ public final class GameNormalConfiguration extends GameConfiguration {
      * @return Instance de la classe GameNormalConfiguration
      */
     public synchronized static GameNormalConfiguration getInstance() {
-        if (instance == null) {
+        if (Objects.isNull(instance)) {
             System.out.println("Creating new GameNormalConfiguration instance");
             instance = new GameNormalConfiguration();
         }
@@ -116,4 +117,48 @@ public final class GameNormalConfiguration extends GameConfiguration {
     public String toString() {
         return "GameConfiguration [words= " + printWords() + "; wordsQueue=" + wordsQueue + "]";
     }
+
+    // PARTIE POUR LES TESTS UNITAIRES
+    /**
+     * Constructeur privé a utilisé uniquement pour les tests de la classe GameNormalConfiguration.
+     * 
+     * @param time Correspond au temps de jeu.
+     * @param nbWords Correspond au nombre de mots à générer dans la file.
+     * @param words Correspond à la liste des mots à taper.
+     * @param wordsQueue Correspond à la file des mots à taper.
+     */
+    private GameNormalConfiguration(ArrayList<String> mots) {
+        if (mots == null) {
+            throw new IllegalArgumentException("Les paramètres ne peuvent pas être null");
+        }
+
+        words = new ArrayList<>();
+        wordsQueue = new ArrayDeque<>();
+
+        for (int i = 0; i < mots.size(); i++) {
+            words.add(mots.get(i));
+        }
+        System.out.println("words = " + printWords(words));
+        for (int i = 0; i < 15; i++) {
+            wordsQueue.add(words.get(i));
+        }
+    }
+
+    private String printWords(ArrayList<String> words) {
+        String str = "";
+        for (String word : words) {
+            str += word + " ";
+        }
+        return str;
+    }
+
+    public synchronized static GameNormalConfiguration getInstanceTest(ArrayList<String> words) {
+        if (Objects.isNull(instance)) {
+            System.out.println("Creating new GameNormalConfiguration instance for tests");
+            instance = new GameNormalConfiguration(words);
+        }
+        return instance;
+    }
+
+    
 }

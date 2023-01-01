@@ -14,7 +14,7 @@ import com.thedeanda.lorem.LoremIpsum;
  * 
  * @author DIAMANT Alexandre
  */
-public final class GameJeuConfiguration extends GameConfiguration {
+public final class GameJeuConfiguration implements GameConfiguration {
     /**
      * Instance de la classe GameJeuConfiguration.
      */
