@@ -1,7 +1,7 @@
 # diamant_cpoo_dactylogame
 
 ## Compilation et execution
-- mvn clean javafx:run
+- 'mvn clean javafx:run' dans le dossier dactylogame.
 
 ## Utilisation du programme
 Après avoir utilisé la commande ci-dessus, une fenêtre s'ouvre.
