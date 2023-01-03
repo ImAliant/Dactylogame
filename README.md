@@ -39,4 +39,8 @@ Le caractère a taper est affiché grâce a un soulignement en jaune en dessous 
 ## Utilisation des tests
 
 - 'mvn clean test' dans le dossier dactylogame.
-- Les tests ne sont pas complets, le seul test unitaire est celui de la classe 'App'.
+- Tests disponibles :
+    * Tests sur les instances des différents objets utilisés dans le jeu (App, GameNormal, GameJeuSolo, GameNormalConfiguration, GameJeuConfiguration, ResultNormal, ResultJeuSolo).
+    * Tests sur les choix de l'utilisateur (Solo (Normal) : temps et nombre de mots, Solo (Jeu) : nombre de PV et longueur de la file avant auto-validation du mot).
+    * Tests sur les méthodes de relance de jeu.
+    

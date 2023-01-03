@@ -32,12 +32,12 @@ public final class GameNormalConfiguration implements GameConfiguration {
      * Corresponds au temps de jeu.
      * Cette valeur est définie en fonction du choix de l'utilisateur.
      */
-    public static final int TIME = MainSceneController.TIME;
+    private final int TIME = MainSceneController.getTime();
     /**
      * Corresponds au nombre de mots à générer dans la file.
      * Cette valeur est définie en fonction du choix de l'utilisateur.
      */
-    public static final int NBWORDS = MainSceneController.NBWORDS;
+    private final int NBWORDS = MainSceneController.getNbWords();
 
     /**
      * <p>Constructeur privé de la classe GameNormalConfiguration.</p>
@@ -99,6 +99,10 @@ public final class GameNormalConfiguration implements GameConfiguration {
         return clone;
     }
 
+    public int getNbWords() {
+        return NBWORDS;
+    }
+
     public int getTime() {
         return TIME;
     }
@@ -113,10 +117,6 @@ public final class GameNormalConfiguration implements GameConfiguration {
     /**
      * Affiche les paramètres de la configuration du jeu.
      */
-    @Override
-    public String toString() {
-        return "GameConfiguration [words= " + printWords() + "; wordsQueue=" + wordsQueue + "]";
-    }
 
     // PARTIE POUR LES TESTS UNITAIRES
     /**

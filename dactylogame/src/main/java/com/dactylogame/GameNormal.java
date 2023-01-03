@@ -432,7 +432,7 @@ public final class GameNormal implements Game {
     */
     @FXML
     private void btnQuitterClicked(MouseEvent event) {
-        Platform.exit();
+        System.exit(0);
     }
 
     /**
@@ -475,6 +475,7 @@ public final class GameNormal implements Game {
         timer.cancel();
         
         resultats();
+        replay = true;
     }
 
     /**
@@ -486,7 +487,7 @@ public final class GameNormal implements Game {
      */
     @Override
     public void resultats() {
-        float minute = (float) GameNormalConfiguration.TIME / 60;
+        float minute = (float) ((GameNormalConfiguration) gameConfiguration).getTime() / 60;
         MPM = (double)(caractereUtile / minute)/5;
         precision = ((double) caractereUtile / (double) (appuiTouche)) * 100;
         regularity = calcRegularity();
@@ -606,6 +607,8 @@ public final class GameNormal implements Game {
         return clone;
     }
 
+
+
     public double getMPM() {
         return MPM;
     }
@@ -616,10 +619,6 @@ public final class GameNormal implements Game {
         return regularity;
     }
     
-    public static void setReplay(boolean b) {
-        replay = b;
-    }
-
     public Result getResult() {
         return result;
     }
@@ -630,6 +629,10 @@ public final class GameNormal implements Game {
 
     public String getWord() {
         return word;
+    }
+
+    public int getNbWords() {
+        return nb_words;
     }
 
     // PARTIE POUR TESTS UNITAIRES
@@ -662,6 +665,10 @@ public final class GameNormal implements Game {
 
     public void handle(KeyEvent event) {
         play(event);
+    }
+    
+    public static void setReplay(boolean b) {
+        replay = b;
     }
 }
 

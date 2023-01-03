@@ -1,9 +1,0 @@
-COMMENTAIRE javadoc : 
-- App : Fait
-- GameJeu : Fait
-- GameJeuConfiguration : a faire
-- GameMethods : Fait
-- GameNormal : a faire
-- GameNormalConfiguration : a faire
-- ResultJeuSolo : a faire
-- ResultNormal : a faire

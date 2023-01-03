@@ -38,12 +38,12 @@ public final class GameJeuConfiguration implements GameConfiguration {
      * Corresponds à la longueur de la queue de mots.
      * Cette valeur est définie en fonction du choix de l'utilisateur.
      */
-    public static final int QUEUE_LENGTH = MainSceneController.QUEUELENGTH;
+    private static final int QUEUE_LENGTH = MainSceneController.getQueueLength();
     /**
      * Corresponds au nombre de points de vie.
      * Cette valeur est définie en fonction du choix de l'utilisateur.
      */
-    public static final int PV = MainSceneController.PV;
+    private static final int PV = MainSceneController.getPv();
 
     /**
      * <p>Constructeur privé de la classe GameJeuConfiguration.</p>
@@ -130,11 +130,11 @@ public final class GameJeuConfiguration implements GameConfiguration {
         instance = null;
     }
 
-    /**
-     * Affiche les paramètres de la configuration du jeu.
-     */
-    @Override
-    public String toString() {
-        return "GameJeuConfiguration [words=" + words + ", bonusWords=" + bonusWords + ", wordsQueue=" + wordsQueue + "]";
+    public static int getQUEUELENGTH() {
+        return QUEUE_LENGTH;
+    }
+
+    public static int getPV() {
+        return PV;
     }
 }

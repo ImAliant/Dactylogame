@@ -28,19 +28,19 @@ public class MainSceneController {
     /**
      * Correspond au temps de jeu choisit par l'utilisateur.
      */
-    public static int TIME;
+    private static int TIME;
     /**
      * Correspond au nombre de mots pouvant être tapés choisit par l'utilisateur.
      */
-    public static int NBWORDS;
+    private static int NBWORDS;
     /**
      * Correspond au nombre de points de vie choisit par l'utilisateur.
      */
-    public static int PV;
+    private static int PV;
     /**
      * Correspond la longueur de la queue choisit par l'utilisateur.
      */
-    public static int QUEUELENGTH;
+    private static int QUEUELENGTH;
 
     /**
      * Instance de la classe Game.
@@ -241,6 +241,22 @@ public class MainSceneController {
 
     public static void setQueueLength(int queueLength) {
         QUEUELENGTH = queueLength;
+    }
+
+    public static int getTime() {
+        return TIME;
+    }
+
+    public static int getNbWords() {
+        return NBWORDS;
+    }
+
+    public static int getPv() {
+        return PV;
+    }
+
+    public static int getQueueLength() {
+        return QUEUELENGTH;
     }
 }
 

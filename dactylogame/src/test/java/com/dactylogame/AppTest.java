@@ -5,13 +5,13 @@ import org.junit.jupiter.api.Test;
 public class AppTest {
     //On veut tester que la méthode main ne plante pas
     @Test
-    public boolean testMain() {
-        System.out.println("Test du lanceur de l'application");
+    public void testMain() {
+        System.out.println("\u001B[34mTEST MAIN APP\u001B[37m");
         boolean test = false;
         App.main(new String[] {});
         //Si on arrive ici, c'est que la méthode main ne plante pas
         test = true;
         assert(test);
-        return test;
+        System.out.println("\u001B[34mFIN TEST MAIN APP\u001B[37m");
     }
 }

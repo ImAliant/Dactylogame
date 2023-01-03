@@ -232,7 +232,7 @@ public final class GameJeu implements Game {
         configuration = GameJeuConfiguration.getInstance();
         wordsQueue = configuration.getWordsQueue();
         queueLength = 1;
-        pv = GameJeuConfiguration.PV;
+        pv = GameJeuConfiguration.getPV();
     }
 
     /**
@@ -386,8 +386,8 @@ public final class GameJeu implements Game {
             else {
                 wordsCorrectlyTypedTemp++;
                 wordsCorrectlyTypedTotal++;
-                if (((GameJeuConfiguration) configuration).getBonusWords().get(wordUpdateCounter-1) == 1 && pv < GameJeuConfiguration.PV) {
-                    pv += (word.length() + pv < GameJeuConfiguration.PV) ? word.length() : GameJeuConfiguration.PV - pv;
+                if (((GameJeuConfiguration) configuration).getBonusWords().get(wordUpdateCounter-1) == 1 && pv < GameJeuConfiguration.getPV()) {
+                    pv += (word.length() + pv < GameJeuConfiguration.getPV()) ? word.length() : GameJeuConfiguration.getPV() - pv;
                     pvLabel.setText(Integer.toString(pv));
                 }
                 wordsTypedLabel.setText("Mots tapés: " + wordsCorrectlyTypedTotal);
@@ -445,7 +445,7 @@ public final class GameJeu implements Game {
      */
     @FXML
     private void btnQuitterClicked(MouseEvent event) {
-        Platform.exit();
+        System.exit(0);
     }
 
     /**
@@ -511,7 +511,7 @@ public final class GameJeu implements Game {
                 public void run() {
                     addNewWordInQueue();
 
-                    if (queueLength == GameJeuConfiguration.QUEUE_LENGTH) {
+                    if (queueLength == GameJeuConfiguration.getQUEUELENGTH()) {
                         // On enleve une vie pour chaque caractere restant.
                         pv -= (word.length() - charPointer)-1 ;
                         pvLabel.setText(Integer.toString(pv));
@@ -641,6 +641,7 @@ public final class GameJeu implements Game {
     @Override
     public void endGame() {
         resultats();
+        replay = true;
     }
 
     @Override
@@ -670,10 +671,6 @@ public final class GameJeu implements Game {
 
     public int getWordsCorrectlyTyped() {
         return wordsCorrectlyTyped;
-    }
-
-    public static void setReplay(boolean b) {
-        replay = b;
     }
 
     public Queue<String> getWordsQueue() {
@@ -738,5 +735,11 @@ public final class GameJeu implements Game {
     public void listPosErrorToDefault() {
         posError.clear();
         posError.addAll(posErrorDefault);
+    }
+
+    // METHODE DE TEST UNITAIRES //
+    // NE DOIT PAS ETRE UTILISEE A PART POUR EFFECTUER DES TESTS //
+    public static void setReplay(boolean b) {
+        replay = b;
     }
 }

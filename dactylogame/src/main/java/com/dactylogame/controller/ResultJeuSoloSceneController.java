@@ -88,7 +88,6 @@ public class ResultJeuSoloSceneController {
 
         btnReplay.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent e) -> {
             try {
-                GameJeu.setReplay(true);
                 game = GameJeu.newGame();
                 game.start(new Stage());
                 btnReplay.getScene().getWindow().hide();

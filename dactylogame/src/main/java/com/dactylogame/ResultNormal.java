@@ -77,7 +77,7 @@ public final class ResultNormal implements Result {
             instance = null;
         }
         else {
-            System.out.println("ResultJeuSolo instance is already null");
+            System.out.println("ResultNormal instance is already null");
         }
     }
     
