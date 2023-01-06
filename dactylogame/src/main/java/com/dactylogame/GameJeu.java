@@ -409,6 +409,7 @@ public final class GameJeu implements Game {
      * @param event évènement de la touche tapée
      */
     private void checkKeyTyped(KeyEvent event) {
+        // Backspace
         if (event.getCharacter().charAt(0) == 8) {
             if (charPointer > 0) {
                 if (errorWord == 1) 

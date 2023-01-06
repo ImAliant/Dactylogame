@@ -109,6 +109,7 @@ public class ResultNormalSceneController {
                 GameNormalConfiguration.reset();
 
                 App.instance.start(new Stage());
+                btnMenu.getScene().getWindow().hide();
             } catch (Exception e1) {
                 e1.printStackTrace();
             }

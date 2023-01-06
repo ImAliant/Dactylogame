@@ -226,6 +226,22 @@ public class MainSceneController {
         Platform.exit();
     }
 
+    public static int getTime() {
+        return TIME;
+    }
+
+    public static int getNbWords() {
+        return NBWORDS;
+    }
+
+    public static int getPv() {
+        return PV;
+    }
+
+    public static int getQueueLength() {
+        return QUEUELENGTH;
+    }
+
     // Setters statiques pour les tests unitaires
     public static void setTime(int time) {
         TIME = time;
@@ -241,22 +257,6 @@ public class MainSceneController {
 
     public static void setQueueLength(int queueLength) {
         QUEUELENGTH = queueLength;
-    }
-
-    public static int getTime() {
-        return TIME;
-    }
-
-    public static int getNbWords() {
-        return NBWORDS;
-    }
-
-    public static int getPv() {
-        return PV;
-    }
-
-    public static int getQueueLength() {
-        return QUEUELENGTH;
     }
 }
 

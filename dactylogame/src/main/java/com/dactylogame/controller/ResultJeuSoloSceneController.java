@@ -105,6 +105,7 @@ public class ResultJeuSoloSceneController {
                 GameJeuConfiguration.reset();
 
                 App.instance.start(new Stage());
+                btnMenu.getScene().getWindow().hide();
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
