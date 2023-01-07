@@ -30,6 +30,8 @@ Les mots s'affiche en vert tant que le joueur n'a pas fait de faute de frappe. E
 Les mots bonus dans le mode solo (Jeu) sont affichés en bleu.
 Le caractère a taper est affiché grâce a un soulignement en jaune en dessous du mot.
 
+Lorsque la partie est terminée, le score est affiché et le joueur peut alors choisir de rejouer (bouton __Rejouer__), de retourner au menu (bouton __Menu__) ou de quitter le jeu (bouton __Quitter__).
+
 ##### Dependances utilisées
 - JavaFX : pour l'interface graphique
 - RichTextFX : pour utiliser des styles CSS dans les labels
