@@ -1,7 +1,7 @@
 # diamant_cpoo_dactylogame
 
 ## Compilation et execution
-- 'mvn clean javafx:run' dans le dossier dactylogame.
+- '__mvn clean javafx:run__' dans le dossier dactylogame.
 
 ## Utilisation du programme
 Après avoir utilisé la commande ci-dessus, une fenêtre s'ouvre.
@@ -40,7 +40,7 @@ Lorsque la partie est terminée, le score est affiché et le joueur peut alors c
 
 ## Utilisation des tests
 
-- 'mvn clean test' dans le dossier dactylogame.
+- '__mvn clean test__' dans le dossier dactylogame.
 - Tests disponibles :
     * Tests sur les instances des différents objets utilisés dans le jeu (App, GameNormal, GameJeuSolo, GameNormalConfiguration, GameJeuConfiguration, ResultNormal, ResultJeuSolo).
     * Tests sur les choix de l'utilisateur (Solo (Normal) : temps et nombre de mots, Solo (Jeu) : nombre de PV et longueur de la file avant auto-validation du mot).
