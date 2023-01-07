@@ -42,5 +42,6 @@ Le caractère a taper est affiché grâce a un soulignement en jaune en dessous 
 - Tests disponibles :
     * Tests sur les instances des différents objets utilisés dans le jeu (App, GameNormal, GameJeuSolo, GameNormalConfiguration, GameJeuConfiguration, ResultNormal, ResultJeuSolo).
     * Tests sur les choix de l'utilisateur (Solo (Normal) : temps et nombre de mots, Solo (Jeu) : nombre de PV et longueur de la file avant auto-validation du mot).
+        -> Erreur connu : le test sur les choix pour le mode Solo (Jeu) ne fonctionne pas si on le lance avec la commande 'mvn clean test' mais fonctionne si on le lance depuis l'IDE.
     * Tests sur les méthodes de relance de jeu.
     

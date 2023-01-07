@@ -17,7 +17,11 @@ public class ChoixUtilisateurTest {
         GameNormalConfiguration config = GameNormalConfiguration.getInstance();
         assert(config != null);
         System.out.println("Temps : " + config.getTime() + " | Nombre de mots : " + config.getNbWords());
+        System.out.printf("Temps: %d ; Choix temps: %d | Nombre de mots: %d; Choix nombre de mots: %d\n", config.getTime(), 30, config.getNbWords(), 60);
         assert(config.getTime() == 30 && config.getNbWords() == 60);
+
+        GameNormal.reset();
+        GameNormalConfiguration.reset();
 
         System.out.println("-------------------------------------------------------");
         System.out.println("CHOIX POUR LE MODE JEU");
@@ -26,8 +30,11 @@ public class ChoixUtilisateurTest {
 
         GameJeuConfiguration configJeu = GameJeuConfiguration.getInstance();
         assert(configJeu != null);
-        System.out.println("PV : " + GameJeuConfiguration.getPV() + " | Longueur de la file : " + GameJeuConfiguration.getQUEUELENGTH());
+        System.out.printf("PV: %d ; Choix PV: %d | Longueur de la file de mots: %d; Choix longueur file de mots: %d\n", GameJeuConfiguration.getPV(), 100, GameJeuConfiguration.getQUEUELENGTH(), 25);
         assert(GameJeuConfiguration.getPV() == 100 && GameJeuConfiguration.getQUEUELENGTH() == 25);
+
+        GameJeu.reset();
+        GameJeuConfiguration.reset();
         
         System.out.println("\u001B[34mFIN TESTS DES CHOIX UTILISATEURS\u001B[37m");
     }
@@ -46,6 +53,9 @@ public class ChoixUtilisateurTest {
         System.out.println("Longueur de la file de mots : " + game.getNbWords());
         assert(game.getNbWords() == 100);
         System.out.println("La file de mots a bien la bonne longueur");
+
+        GameNormalConfiguration.reset();
+        GameNormal.reset();
 
         System.out.println("\u001B[34mFIN TESTS DE LA LONGUEUR DE LA FILE DE MOTS\u001B[37m");
     }

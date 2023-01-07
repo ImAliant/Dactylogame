@@ -87,6 +87,9 @@ public class GameTest {
         }
         System.out.println("Le jeu a bien été relancé");
         System.out.println("\u001B[34mFIN DU TEST DE LA RELANCE DU MODE NORMAL\u001B[37m");
+
+        GameNormalConfiguration.reset();
+        GameNormal.reset();
     }
 
     @Test
@@ -119,6 +122,9 @@ public class GameTest {
         }
         System.out.println("Le jeu a bien été relancé");
         System.out.println("\u001B[34mFIN DU TEST DE LA RELANCE DU MODE JEU\u001B[37m");
+
+        GameJeuConfiguration.reset();
+        GameJeu.reset();
     }
 
     /*private String printWords(ArrayList<String> words) {
